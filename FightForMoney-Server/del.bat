@@ -1,0 +1,1 @@
+for /r %i in (*.meta) do del %i

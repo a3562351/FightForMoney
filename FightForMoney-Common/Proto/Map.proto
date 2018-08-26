@@ -1,0 +1,42 @@
+syntax = "proto3";
+package common.protobuf;
+import "Data.proto";
+
+//地图数据
+message SCMapData {
+	MapData map_data = 1;
+}
+
+//信息变更
+message SCMapInfoChange {
+	string map_name = 1;
+	int32 grid_id = 2;
+	int32 terrain_id = 3;
+	int32 build_id = 4;
+}
+
+//土地购买
+message CSTerrainBuy {
+	string map_name = 1;
+	int32 grid_id = 2;
+}
+
+//建筑建设
+message CSBuildAdd {
+	string map_name = 1;
+	int32 grid_id = 2;
+	int32 data_id = 3;
+	float direction = 4;
+}
+
+//建筑拆除
+message CSBuildRemove {
+	string map_name = 1;
+	int32 grid_id = 2;
+}
+
+//建筑升级
+message CSBuildUpgrade {
+	string map_name = 1;
+	int32 grid_id = 2;
+}

@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package common.protobuf;
+import "Data.proto";
+
+//[20001]创建玩家
+message CSCreatePlayer{
+	string player_name = 1;
+	string map_name = 2;
+}
+
+//[20001]加载玩家
+message CSLoadPlayer{
+	int32 player_id = 1;
+}
+
+//玩家列表返回
+message SCPlayerList{
+	repeated PlayerInfo player_list = 1;
+}
+
+//玩家信息
+message PlayerInfo {
+	int32 player_id = 1;
+	string player_name = 2;
+	string map_name = 3;
+}
+
+//玩家数据
+message SCPlayerInfo{
+	PlayerStruct player_struct = 1;
+}
+
+//通知客户端进场景
+message SCSceneEnter{
+	string map_name = 1; 
+}
+
+//客户端已进入场景
+message CSSceneEnter{
+	
+}
