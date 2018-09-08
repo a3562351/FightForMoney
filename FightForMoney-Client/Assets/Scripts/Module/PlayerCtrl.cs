@@ -9,7 +9,7 @@ using UnityEngine;
 class PlayerCtrl : CtrlBase
 {
     public static PlayerCtrl Instance = null;
-    private int user_id;
+    private int player_id;
     private string login_key;
 
     public static PlayerCtrl GetInstance()
@@ -24,18 +24,18 @@ class PlayerCtrl : CtrlBase
     public override void Init()
     {
         base.Init();
-        ClientSocket.GetInstance().AddHandler(typeof(SCLogin), this.SCLogin);
-        ClientSocket.GetInstance().AddHandler(typeof(SCHeartBeat), this.SCHeartBeat);
-        ClientSocket.GetInstance().AddHandler(typeof(SCNotice), this.SCNotice);
-        ClientSocket.GetInstance().AddHandler(typeof(SCPlayerList), this.SCPlayerList);
-        ClientSocket.GetInstance().AddHandler(typeof(SCPlayerInfo), this.SCPlayerInfo);
-        ClientSocket.GetInstance().AddHandler(typeof(SCMapInfo), this.SCMapInfo);
+        ClientSocket.GetInstance().AddSCHandler(typeof(SCLogin), this.SCLogin);
+        ClientSocket.GetInstance().AddSCHandler(typeof(SCHeartBeat), this.SCHeartBeat);
+        ClientSocket.GetInstance().AddSCHandler(typeof(SCNotice), this.SCNotice);
+        ClientSocket.GetInstance().AddSCHandler(typeof(SCPlayerList), this.SCPlayerList);
+        ClientSocket.GetInstance().AddSCHandler(typeof(SCPlayerInfo), this.SCPlayerInfo);
+        ClientSocket.GetInstance().AddSCHandler(typeof(SCMapInfo), this.SCMapInfo);
     }
 
     public void ReConnect()
     {
         CSReconnect message = new CSReconnect();
-        message.UserId = this.user_id;
+        message.PlayerId = this.player_id;
         message.LoginKey = this.login_key;
         ClientSocket.GetInstance().SendMessage(message);
     }
@@ -92,7 +92,6 @@ class PlayerCtrl : CtrlBase
 
         if(protocol.ResultCode == NoticeCode.LoginSucc)
         {
-            this.user_id = protocol.UserId;
             this.login_key = protocol.LoginKey;
         }
         else if(protocol.ResultCode == NoticeCode.NotExistAccount)

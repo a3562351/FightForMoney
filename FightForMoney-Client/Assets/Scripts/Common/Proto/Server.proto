@@ -24,6 +24,11 @@ message LRLoginResult {
 	int32 user_id = 2;
 }
 
+//玩家顶号
+message LRPlayerRepeat{
+	int32 player_id = 1;
+}
+
 //服务器间远程调用
 message SSRemoteCall {
 	int32 remote_id = 1;
@@ -42,20 +47,24 @@ message SSRemoteResult {
 	int32 callback_id = 4;
 }
 
-//用户离线
-message RSUserDisconnect{
-	int32 user_id = 1;
+//玩家登陆
+message RSPlayerLogin{
+	int32 player_id = 1;
 }
 
-//用户登出
-message RSUserLoginout{
-	int32 user_id = 1;
+//玩家离线
+message RSPlayerDisconnect{
+	int32 player_id = 1;
+}
+
+//玩家登出
+message RSPlayerLogout{
+	int32 player_id = 1;
 }
 
 //加载玩家数据完成
 message SRLoadPlayerComplete{
-	int32 server_id = 1;
-	int32 scene_id = 2;
+	int32 player_id = 1;
 }
 
 //切出场景

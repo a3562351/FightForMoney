@@ -14,7 +14,7 @@ class RouteMsgHandler : MsgHandler
         this.server = server;
     }
 
-    public override void Handle(IMessage data, int connect_id, int addition, List<int> user_id_list)
+    public override void Handle(IMessage data, int connect_id, int addition, List<int> player_id_list)
     {
         short msg_id = Protocol.GetMsgCode(data);
         switch (msg_id)
@@ -35,31 +35,30 @@ class RouteMsgHandler : MsgHandler
             //客户端登陆
             case MsgCode.CS_Login:
                 {
-                    User user = this.server.GetUserMgr().GetUserByConnectId(connect_id);
-                    if(user != null)
-                    {
-                        if (user.State != 0)
-                        {
-                            Log.Debug("CS_Login UserState Not Invalid UserId:" + user.UserId + " State:" + user.State);
-                            return;
-                        }
-                    }
-                    else
-                    {
-                        user = new User(this.server, connect_id);
-                        this.server.GetUserMgr().AddUserByConnectId(user);
-                    }
-
                     ServerInfo server_info = this.server.GetServerInfoBySceneId(SceneId.LOGIN);
-                    if(server_info == null)
+                    if (server_info == null)
                     {
                         Log.Debug("CS_Login LoginScene Not Exist");
                         return;
                     }
 
+                    RoutePlayer player = RouteUserMgr.GetInstance().GetPlayerByConnectId(connect_id);
+                    if(player != null)
+                    {
+                        if (!player.IsOriginState())
+                        {
+                            Log.DebugFormat("CS_Login RouteRoleState Not OriginState UserId:{0} State:{1}", player.PlayerId, player.State);
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        player = new RoutePlayer(connect_id);
+                        RouteUserMgr.GetInstance().AddPlayerByConnectId(player);
+                    }
+
                     //转发到登陆服验证账号信息
-                    user.AddState(UserState.LOGINING);
-                    user.LoginMsg = data;   //用于顶号登陆
+                    player.AddState(RoutePlayerState.LOGINING);
                     this.server.GetSocket().SendMsgToServer(data, server_info.ConnectId, connect_id, null);
                 }
                 break;
@@ -69,51 +68,23 @@ class RouteMsgHandler : MsgHandler
                     LRLoginResult protocol = data as LRLoginResult;
                     SCLogin message = new SCLogin();
 
+                    RoutePlayer player = RouteUserMgr.GetInstance().GetPlayerByConnectId(addition);
                     if (protocol.ResultCode == NoticeCode.LoginSucc)
                     {
                         //登陆成功
-                        User user = this.server.GetUserMgr().GetUserByConnectId(addition);
-                        user.UserId = protocol.UserId;
-                        user.LoginKey = this.CreateLoginKey();
-                        this.server.GetUserMgr().AddUserByUserId(user);
+                        player.UserId = protocol.UserId;
+                        player.LoginKey = this.CreateLoginKey();
 
                         //切换成已登陆状态
-                        user.CancelState(UserState.LOGINING);
-                        user.AddState(UserState.LOGINED);
+                        player.CancelState(RoutePlayerState.LOGINING);
+                        player.AddState(RoutePlayerState.LOGINED);
 
-                        message.UserId = user.UserId;
-                        message.LoginKey = user.LoginKey;
-                    }
-                    else if(protocol.ResultCode == NoticeCode.RepeatLogin)
-                    {
-                        //重复登陆
-                        User user = this.server.GetUserMgr().GetUserByUserId(protocol.UserId);
-                        if(user != null)
-                        {
-                            //被顶号用户立即登出
-                            SCNotice msg = new SCNotice();
-                            msg.NoticeCode = NoticeCode.BeRepeatLogin;
-                            msg.Param.Add(this.server.GetSocket().GetConnectInfo(addition));
-                            user.SendMsg(msg);
-                            user.LoginOut();
-                        }
-                        else
-                        {
-                            //通知登陆服玩家早已离线
-                            RSUserLoginout msg = new RSUserLoginout();
-                            msg.UserId = user.UserId;
-                            this.server.GetSocket().SendMsgToServer(msg, addition);
-                        }
-
-                        //顶号用户重新登陆
-                        user = this.server.GetUserMgr().GetUserByConnectId(addition);
-                        this.server.GetSocket().SendMsgToServer(user.LoginMsg, connect_id, user.ConnectId, null);
+                        message.LoginKey = player.LoginKey;
                     }
                     else
                     {
-                        //登陆失败重置用户状态为空
-                        User user = this.server.GetUserMgr().GetUserByConnectId(addition);
-                        user.State = 0;
+                        //登陆失败重置状态
+                        player.ResetState();
                     }
 
                     //登陆返回
@@ -121,14 +92,66 @@ class RouteMsgHandler : MsgHandler
                     this.server.GetSocket().SendMsgToClient(message, addition);
                 }
                 break;
+            //玩家列表返回
+            case MsgCode.SC_PlayerList:
+                {
+                    RoutePlayer player = RouteUserMgr.GetInstance().GetPlayerByConnectId(addition);
+                    player.SendMsg(data);
+                }
+                break;
+            //创建玩家
+            case MsgCode.CS_CreatePlayer:
+                {
+                    CSCreatePlayer protocol = data as CSCreatePlayer;
+                    RoutePlayer player = RouteUserMgr.GetInstance().GetPlayerByConnectId(connect_id);
+                    if (player == null || !player.CheckState(RoutePlayerState.LOGINED) || player.CheckState(RoutePlayerState.LOADED))
+                    {
+                        return;
+                    }
+
+                    protocol.UserId = player.UserId;
+                    ServerInfo server_info = this.server.GetServerInfoBySceneId(SceneId.LOGIN);
+                    this.server.GetSocket().SendMsgToServer(protocol, server_info.ConnectId, connect_id, null);
+                }
+                break;
+            //加载玩家
+            case MsgCode.CS_LoadPlayer:
+                {
+                    CSLoadPlayer protocol = data as CSLoadPlayer;
+                    RoutePlayer player = RouteUserMgr.GetInstance().GetPlayerByConnectId(connect_id);
+                    if(player == null || !player.CheckState(RoutePlayerState.LOGINED) || player.CheckState(RoutePlayerState.LOADED))
+                    {
+                        return;
+                    }
+
+                    protocol.UserId = player.UserId;
+                    player.LoadMsg = protocol;
+                    ServerInfo server_info = this.server.GetServerInfoBySceneId(SceneId.LOGIN);
+                    this.server.GetSocket().SendMsgToServer(protocol, server_info.ConnectId, connect_id, null);
+                }
+                break;
+            //玩家顶号
+            case MsgCode.LR_PlayerRepeat:
+                {
+                    LRPlayerRepeat protocol = data as LRPlayerRepeat;
+                    RoutePlayer old_player = RouteUserMgr.GetInstance().GetPlayerByConnectId(protocol.PlayerId);
+                    old_player.Logout();
+
+                    RoutePlayer player = RouteUserMgr.GetInstance().GetPlayerByConnectId(addition);
+                    ServerInfo server_info = this.server.GetServerInfoBySceneId(SceneId.LOGIN);
+                    this.server.GetSocket().SendMsgToServer(player.LoadMsg, server_info.ConnectId, connect_id, null);
+                }
+                break;
             //场景加载玩家数据完成
             case MsgCode.SR_LoadPlayerComplete:
                 {
-                    SRLoadPlayerComplete protocol = new SRLoadPlayerComplete();
+                    SRLoadPlayerComplete protocol = data as SRLoadPlayerComplete;
 
-                    User user = this.server.GetUserMgr().GetUserByUserId(addition);
-                    user.CurServerId = protocol.ServerId;
-                    user.CurSceneId = protocol.SceneId;
+                    RoutePlayer player = RouteUserMgr.GetInstance().GetPlayerByConnectId(addition);
+                    player.PlayerId = protocol.PlayerId;
+                    player.AddState(RoutePlayerState.LOADED);
+                    player.LoadMsg = null;
+                    RouteUserMgr.GetInstance().AddPlayerByPlayerId(player);
                 }
                 break;
             //客户端重连
@@ -137,30 +160,38 @@ class RouteMsgHandler : MsgHandler
                     CSReconnect protocol = data as CSReconnect;
                     SCReconnect message = new SCReconnect();
 
-                    User user = this.server.GetUserMgr().GetUserByUserId(protocol.UserId);
-                    if(user == null)
+                    RoutePlayer player = RouteUserMgr.GetInstance().GetPlayerByPlayerId(protocol.PlayerId);
+                    if(player == null)
                     {
-                        Log.Debug("CS_Reconnect Not User Id:" + protocol.UserId);
+                        Log.DebugFormat("CS_Reconnect Not RoutePlayer Id:{0}", protocol.PlayerId);
+                        message.ResultCode = NoticeCode.ReConnectFail;
+                        this.server.GetSocket().SendMsgToClient(message, connect_id);
                         return;
                     }
 
-                    if (!user.CheckState(UserState.LOGINED))
+                    if (!player.CheckState(RoutePlayerState.LOADED))
                     {
-                        Log.Debug("CS_Reconnect User Not Logined Id:" + protocol.UserId);
+                        Log.DebugFormat("CS_Reconnect RouteUser Not Loaded Id:{0}", protocol.PlayerId);
+                        message.ResultCode = NoticeCode.ReConnectFail;
+                        this.server.GetSocket().SendMsgToClient(message, connect_id);
                         return;
                     }
 
-                    if (user.LoginKey != protocol.LoginKey)
+                    if (player.LoginKey != protocol.LoginKey)
                     {
-                        Log.DebugFormat("CS_Reconnect LoginKey Not Equal {0} {1}", user.LoginKey, protocol.LoginKey);
+                        Log.DebugFormat("CS_Reconnect LoginKey Not Equal {0} {1}", player.LoginKey, protocol.LoginKey);
+                        message.ResultCode = NoticeCode.ReConnectFail;
+                        this.server.GetSocket().SendMsgToClient(message, connect_id);
                         return;
                     }
+
+                    message.ResultCode = NoticeCode.ReconnectSucc;
+                    this.server.GetSocket().SendMsgToClient(message, connect_id);
 
                     //重连更新用户连接
-                    user.ConnectId = connect_id;
-                    this.server.GetUserMgr().AddUserByConnectId(user);
-                    this.server.GetSocket().SendMsgToClient(message, connect_id);
-                    user.Reconnect();
+                    player.ConnectId = connect_id;
+                    RouteUserMgr.GetInstance().AddPlayerByConnectId(player);
+                    player.Reconnect();
                 }
                 break;
             //服务器间远程调用
@@ -210,9 +241,9 @@ class RouteMsgHandler : MsgHandler
                     ServerInfo to_server_info = this.server.GetServerInfoBySceneId(protocol.ToSceneId, protocol.ToServerId);
                     if(to_server_info != null)
                     {
-                        User user = this.server.GetUserMgr().GetUserByUserId(addition);
-                        user.CurServerId = protocol.ToServerId;
-                        user.CurSceneId = protocol.ToSceneId;
+                        RoutePlayer player = RouteUserMgr.GetInstance().GetPlayerByPlayerId(addition);
+                        player.CurServerId = protocol.ToServerId;
+                        player.CurSceneId = protocol.ToSceneId;
 
                         RSChangeInScene message = new RSChangeInScene();
                         message.PlayerStruct = protocol.PlayerStruct;
@@ -231,23 +262,23 @@ class RouteMsgHandler : MsgHandler
                     if(server_info != null)
                     {
                         //来自服务器的信息，转发给客户端
-                        User user = this.server.GetUserMgr().GetUserByUserId(addition);
-                        user.SendMsg(data);
+                        RoutePlayer player = RouteUserMgr.GetInstance().GetPlayerByPlayerId(addition);
+                        player.SendMsg(data);
                     }
                     else
                     {
                         //来自客户端的信息，转发给服务器
-                        User user = this.server.GetUserMgr().GetUserByConnectId(connect_id);
-                        if(user == null)
+                        RoutePlayer player = RouteUserMgr.GetInstance().GetPlayerByConnectId(connect_id);
+                        if (player == null || !player.CheckState(RoutePlayerState.LOADED))
                         {
                             return;
                         }
 
-                        if(msg_id == MsgCode.SC_HeartBeat)
+                        if (msg_id == MsgCode.SC_HeartBeat)
                         {
-                            user.SetActive();
+                            player.SetActive();
                             SCHeartBeat message = new SCHeartBeat();
-                            user.SendMsg(message);
+                            player.SendMsg(message);
                             return;
                         }
 
@@ -256,13 +287,13 @@ class RouteMsgHandler : MsgHandler
                         {
                             int to_scene_id = MsgCode.ProtocolSceneId[msg_id];
                             ServerInfo to_server_info = this.server.GetServerInfoBySceneId(to_scene_id);
-                            this.server.GetSocket().SendMsgToServer(data, to_server_info.ConnectId, user.UserId);
+                            this.server.GetSocket().SendMsgToServer(data, to_server_info.ConnectId, player.PlayerId);
                         }
                         else
                         {
                             //默认转发到用户所在场景服
-                            ServerInfo to_server_info = this.server.GetServerInfoByServerId(user.CurServerId);
-                            this.server.GetSocket().SendMsgToServer(data, to_server_info.ConnectId, user.UserId);
+                            ServerInfo to_server_info = this.server.GetServerInfoByServerId(player.CurServerId);
+                            this.server.GetSocket().SendMsgToServer(data, to_server_info.ConnectId, player.PlayerId);
                         }
                     }
                 }
@@ -272,15 +303,15 @@ class RouteMsgHandler : MsgHandler
 
     public override void OnDisConnect(int connect_id)
     {
-        User user = this.server.GetUserMgr().GetUserByConnectId(connect_id);
-        if(user != null)
+        RoutePlayer player = RouteUserMgr.GetInstance().GetPlayerByConnectId(connect_id);
+        if(player != null)
         {
-            this.server.GetUserMgr().DelUserByConnectId(connect_id);
-            if (user.CheckState(UserState.LOGINED))
+            RouteUserMgr.GetInstance().DelPlayerByConnectId(connect_id);
+            if (player.CheckState(RoutePlayerState.LOGINED))
             {
-                user.Disconnect();
-                RSUserDisconnect message = new RSUserDisconnect();
-                message.UserId = user.UserId;
+                player.Disconnect();
+                RSPlayerLogout message = new RSPlayerLogout();
+                message.PlayerId = player.PlayerId;
                 this.server.SendMsgToAllServer(message);
             }
         }

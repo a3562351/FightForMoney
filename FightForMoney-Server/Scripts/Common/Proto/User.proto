@@ -12,13 +12,12 @@ message CSLogin {
 //登陆返回
 message SCLogin {
 	int32 result_code = 1;
-	int32 user_id = 2;
-	string login_key = 3;
+	string login_key = 2;
 }
 
 //重连
 message CSReconnect{
-	int32 user_id = 1;
+	int32 player_id = 1;
 	string login_key = 2;
 }
 

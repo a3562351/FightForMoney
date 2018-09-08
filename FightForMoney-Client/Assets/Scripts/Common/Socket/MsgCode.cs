@@ -34,20 +34,22 @@ class MsgCode
 	public const short SR_RegisterServer = 10027;
 	public const short RS_DispatchServer = 10028;
 	public const short LR_LoginResult = 10029;
-	public const short SS_RemoteCall = 10030;
-	public const short SS_RemoteResult = 10031;
-	public const short RS_UserDisconnect = 10032;
-	public const short RS_UserLoginout = 10033;
-	public const short SR_LoadPlayerComplete = 10034;
-	public const short SR_ChangeOutScene = 10035;
-	public const short RS_ChangeInScene = 10036;
-	public const short CS_Login = 10037;
-	public const short SC_Login = 10038;
-	public const short CS_Reconnect = 10039;
-	public const short SC_Reconnect = 10040;
-	public const short CS_HeartBeat = 10041;
-	public const short SC_HeartBeat = 10042;
-	public const short SC_Notice = 10043;
+	public const short LR_PlayerRepeat = 10030;
+	public const short SS_RemoteCall = 10031;
+	public const short SS_RemoteResult = 10032;
+	public const short RS_PlayerLogin = 10033;
+	public const short RS_PlayerDisconnect = 10034;
+	public const short RS_PlayerLogout = 10035;
+	public const short SR_LoadPlayerComplete = 10036;
+	public const short SR_ChangeOutScene = 10037;
+	public const short RS_ChangeInScene = 10038;
+	public const short CS_Login = 10039;
+	public const short SC_Login = 10040;
+	public const short CS_Reconnect = 10041;
+	public const short SC_Reconnect = 10042;
+	public const short CS_HeartBeat = 10043;
+	public const short SC_HeartBeat = 10044;
+	public const short SC_Notice = 10045;
 
 	public static Dictionary<short, MessageParser> ProtocolParser = new Dictionary<short, MessageParser>() {
 		{MsgCode.CS_BattleBehavior, CSBattleBehavior.Parser},
@@ -79,10 +81,12 @@ class MsgCode
 		{MsgCode.SR_RegisterServer, SRRegisterServer.Parser},
 		{MsgCode.RS_DispatchServer, RSDispatchServer.Parser},
 		{MsgCode.LR_LoginResult, LRLoginResult.Parser},
+		{MsgCode.LR_PlayerRepeat, LRPlayerRepeat.Parser},
 		{MsgCode.SS_RemoteCall, SSRemoteCall.Parser},
 		{MsgCode.SS_RemoteResult, SSRemoteResult.Parser},
-		{MsgCode.RS_UserDisconnect, RSUserDisconnect.Parser},
-		{MsgCode.RS_UserLoginout, RSUserLoginout.Parser},
+		{MsgCode.RS_PlayerLogin, RSPlayerLogin.Parser},
+		{MsgCode.RS_PlayerDisconnect, RSPlayerDisconnect.Parser},
+		{MsgCode.RS_PlayerLogout, RSPlayerLogout.Parser},
 		{MsgCode.SR_LoadPlayerComplete, SRLoadPlayerComplete.Parser},
 		{MsgCode.SR_ChangeOutScene, SRChangeOutScene.Parser},
 		{MsgCode.RS_ChangeInScene, RSChangeInScene.Parser},
@@ -124,10 +128,12 @@ class MsgCode
 		{typeof(SRRegisterServer), MsgCode.SR_RegisterServer},
 		{typeof(RSDispatchServer), MsgCode.RS_DispatchServer},
 		{typeof(LRLoginResult), MsgCode.LR_LoginResult},
+		{typeof(LRPlayerRepeat), MsgCode.LR_PlayerRepeat},
 		{typeof(SSRemoteCall), MsgCode.SS_RemoteCall},
 		{typeof(SSRemoteResult), MsgCode.SS_RemoteResult},
-		{typeof(RSUserDisconnect), MsgCode.RS_UserDisconnect},
-		{typeof(RSUserLoginout), MsgCode.RS_UserLoginout},
+		{typeof(RSPlayerLogin), MsgCode.RS_PlayerLogin},
+		{typeof(RSPlayerDisconnect), MsgCode.RS_PlayerDisconnect},
+		{typeof(RSPlayerLogout), MsgCode.RS_PlayerLogout},
 		{typeof(SRLoadPlayerComplete), MsgCode.SR_LoadPlayerComplete},
 		{typeof(SRChangeOutScene), MsgCode.SR_ChangeOutScene},
 		{typeof(RSChangeInScene), MsgCode.RS_ChangeInScene},
@@ -140,10 +146,8 @@ class MsgCode
 	};
 
 	public static Dictionary<short, int> ProtocolSceneId = new Dictionary<short, int>() {
-		{10021, 20001},
-		{10022, 20001},
-		{10009, 30001},
 		{10004, 30001},
+		{10009, 30001},
 		{10005, 30001},
 		{10007, 30001},
 	};

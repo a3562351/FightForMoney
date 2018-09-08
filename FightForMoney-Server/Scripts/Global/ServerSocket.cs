@@ -71,6 +71,11 @@ class ServerSocket
         this.msg_handler.AddHandler(type, handler);
     }
 
+    public void AddCSHandler(Type type, CSHandler handler)
+    {
+        this.msg_handler.AddCSHandler(type, handler);
+    }
+
     private Socket GetSocket(int connect_id)
     {
         Socket socket = null;
@@ -199,18 +204,18 @@ class ServerSocket
         }
     }
 
-    private byte[] PackProtocol(IMessage protocol, int addition = 0, List<int> user_id_list = null)
+    private byte[] PackProtocol(IMessage protocol, int addition = 0, List<int> player_id_list = null)
     {
         ByteBuffer buffer = new ByteBuffer();
 
         //写入附加位
         buffer.WriteInt(addition);
 
-        //写入用户ID列表
-        if(user_id_list != null)
+        //写入玩家ID列表
+        if(player_id_list != null)
         {
-            buffer.WriteInt(user_id_list.Count);
-            foreach (int user_id in user_id_list)
+            buffer.WriteInt(player_id_list.Count);
+            foreach (int user_id in player_id_list)
             {
                 buffer.WriteInt(user_id);
             }
@@ -242,12 +247,12 @@ class ServerSocket
         int addition = buffer.ReadInt();
 
         //读出用户ID列表
-        List<int> user_id_list = new List<int>();
+        List<int> player_id_list = new List<int>();
         int list_lenght = buffer.ReadInt();
         for (int i = 1; i <= list_lenght; i++)
         {
             int user_id = buffer.ReadInt();
-            user_id_list.Add(user_id);
+            player_id_list.Add(user_id);
         }
 
         //读出协议体
@@ -263,7 +268,7 @@ class ServerSocket
             mProtocolInfo.Protocol = protocol;
             mProtocolInfo.ConnectId = connect_id;
             mProtocolInfo.Addition = addition;
-            mProtocolInfo.UserIdList = user_id_list;
+            mProtocolInfo.UserIdList = player_id_list;
 
             lock (msg_lock)
             {
@@ -293,20 +298,20 @@ class ServerSocket
     }
 
     //发往路由
-    public void SendMsgToRoute(IMessage protocol, int addition = 0, List<int> user_id_list = null)
+    public void SendMsgToRoute(IMessage protocol, int addition = 0, List<int> player_id_list = null)
     {
         Log.Debug("服务端发送消息:" + protocol.GetType() + " 数据:" + protocol.ToString());
-        this.server_socket.Send(this.PackProtocol(protocol, addition, user_id_list));
+        this.server_socket.Send(this.PackProtocol(protocol, addition, player_id_list));
     }
 
     //发往服务器
-    public void SendMsgToServer(IMessage protocol, int connect_id, int addition = 0, List<int> user_id_list = null)
+    public void SendMsgToServer(IMessage protocol, int connect_id, int addition = 0, List<int> player_id_list = null)
     {
         Socket socket = this.GetSocket(connect_id);
         if(socket != null)
         {
             Log.Debug("服务端发送消息:" + protocol.GetType() + " 数据:" + protocol.ToString());
-            socket.Send(this.PackProtocol(protocol, addition, user_id_list));
+            socket.Send(this.PackProtocol(protocol, addition, player_id_list));
         }
     }
 

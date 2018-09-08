@@ -16,7 +16,7 @@ class GameMsgHandler : MsgHandler
         this.remote_handler = remote_handler;
     }
 
-    public override void Handle(IMessage data, int connect_id, int addition, List<int> user_id_list)
+    public override void Handle(IMessage data, int connect_id, int addition, List<int> player_id_list)
     {
         short msg_id = Protocol.GetMsgCode(data);
         switch (msg_id)
@@ -60,7 +60,7 @@ class GameMsgHandler : MsgHandler
 
             default:
                 {
-                    this.dispatcher.Dispatch(data, connect_id, addition, user_id_list);
+                    this.dispatcher.Dispatch(data, connect_id, addition, player_id_list);
                 }
                 break;
         }

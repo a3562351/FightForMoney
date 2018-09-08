@@ -26,18 +26,18 @@ namespace Common.Protobuf {
           string.Concat(
             "CgpVc2VyLnByb3RvEg9jb21tb24ucHJvdG9idWYiPgoHQ1NMb2dpbhIPCgdh",
             "Y2NvdW50GAEgASgJEhAKCHBhc3N3b3JkGAIgASgJEhAKCGlzX2xvZ2luGAMg",
-            "ASgIIkIKB1NDTG9naW4SEwoLcmVzdWx0X2NvZGUYASABKAUSDwoHdXNlcl9p",
-            "ZBgCIAEoBRIRCglsb2dpbl9rZXkYAyABKAkiMQoLQ1NSZWNvbm5lY3QSDwoH",
-            "dXNlcl9pZBgBIAEoBRIRCglsb2dpbl9rZXkYAiABKAkiIgoLU0NSZWNvbm5l",
-            "Y3QSEwoLcmVzdWx0X2NvZGUYASABKAUiDQoLQ1NIZWFydEJlYXQiDQoLU0NI",
-            "ZWFydEJlYXQiLgoIU0NOb3RpY2USEwoLbm90aWNlX2NvZGUYASABKAUSDQoF",
-            "cGFyYW0YAiADKAliBnByb3RvMw=="));
+            "ASgIIjEKB1NDTG9naW4SEwoLcmVzdWx0X2NvZGUYASABKAUSEQoJbG9naW5f",
+            "a2V5GAIgASgJIjMKC0NTUmVjb25uZWN0EhEKCXBsYXllcl9pZBgBIAEoBRIR",
+            "Cglsb2dpbl9rZXkYAiABKAkiIgoLU0NSZWNvbm5lY3QSEwoLcmVzdWx0X2Nv",
+            "ZGUYASABKAUiDQoLQ1NIZWFydEJlYXQiDQoLU0NIZWFydEJlYXQiLgoIU0NO",
+            "b3RpY2USEwoLbm90aWNlX2NvZGUYASABKAUSDQoFcGFyYW0YAiADKAliBnBy",
+            "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.CSLogin), global::Common.Protobuf.CSLogin.Parser, new[]{ "Account", "Password", "IsLogin" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.SCLogin), global::Common.Protobuf.SCLogin.Parser, new[]{ "ResultCode", "UserId", "LoginKey" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.CSReconnect), global::Common.Protobuf.CSReconnect.Parser, new[]{ "UserId", "LoginKey" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.SCLogin), global::Common.Protobuf.SCLogin.Parser, new[]{ "ResultCode", "LoginKey" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.CSReconnect), global::Common.Protobuf.CSReconnect.Parser, new[]{ "PlayerId", "LoginKey" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.SCReconnect), global::Common.Protobuf.SCReconnect.Parser, new[]{ "ResultCode" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.CSHeartBeat), global::Common.Protobuf.CSHeartBeat.Parser, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.SCHeartBeat), global::Common.Protobuf.SCHeartBeat.Parser, null, null, null, null),
@@ -265,7 +265,6 @@ namespace Common.Protobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public SCLogin(SCLogin other) : this() {
       resultCode_ = other.resultCode_;
-      userId_ = other.userId_;
       loginKey_ = other.loginKey_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -286,19 +285,8 @@ namespace Common.Protobuf {
       }
     }
 
-    /// <summary>Field number for the "user_id" field.</summary>
-    public const int UserIdFieldNumber = 2;
-    private int userId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int UserId {
-      get { return userId_; }
-      set {
-        userId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "login_key" field.</summary>
-    public const int LoginKeyFieldNumber = 3;
+    public const int LoginKeyFieldNumber = 2;
     private string loginKey_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string LoginKey {
@@ -322,7 +310,6 @@ namespace Common.Protobuf {
         return true;
       }
       if (ResultCode != other.ResultCode) return false;
-      if (UserId != other.UserId) return false;
       if (LoginKey != other.LoginKey) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -331,7 +318,6 @@ namespace Common.Protobuf {
     public override int GetHashCode() {
       int hash = 1;
       if (ResultCode != 0) hash ^= ResultCode.GetHashCode();
-      if (UserId != 0) hash ^= UserId.GetHashCode();
       if (LoginKey.Length != 0) hash ^= LoginKey.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -350,12 +336,8 @@ namespace Common.Protobuf {
         output.WriteRawTag(8);
         output.WriteInt32(ResultCode);
       }
-      if (UserId != 0) {
-        output.WriteRawTag(16);
-        output.WriteInt32(UserId);
-      }
       if (LoginKey.Length != 0) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(18);
         output.WriteString(LoginKey);
       }
       if (_unknownFields != null) {
@@ -368,9 +350,6 @@ namespace Common.Protobuf {
       int size = 0;
       if (ResultCode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(ResultCode);
-      }
-      if (UserId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(UserId);
       }
       if (LoginKey.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(LoginKey);
@@ -388,9 +367,6 @@ namespace Common.Protobuf {
       }
       if (other.ResultCode != 0) {
         ResultCode = other.ResultCode;
-      }
-      if (other.UserId != 0) {
-        UserId = other.UserId;
       }
       if (other.LoginKey.Length != 0) {
         LoginKey = other.LoginKey;
@@ -410,11 +386,7 @@ namespace Common.Protobuf {
             ResultCode = input.ReadInt32();
             break;
           }
-          case 16: {
-            UserId = input.ReadInt32();
-            break;
-          }
-          case 26: {
+          case 18: {
             LoginKey = input.ReadString();
             break;
           }
@@ -452,7 +424,7 @@ namespace Common.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public CSReconnect(CSReconnect other) : this() {
-      userId_ = other.userId_;
+      playerId_ = other.playerId_;
       loginKey_ = other.loginKey_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -462,14 +434,14 @@ namespace Common.Protobuf {
       return new CSReconnect(this);
     }
 
-    /// <summary>Field number for the "user_id" field.</summary>
-    public const int UserIdFieldNumber = 1;
-    private int userId_;
+    /// <summary>Field number for the "player_id" field.</summary>
+    public const int PlayerIdFieldNumber = 1;
+    private int playerId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int UserId {
-      get { return userId_; }
+    public int PlayerId {
+      get { return playerId_; }
       set {
-        userId_ = value;
+        playerId_ = value;
       }
     }
 
@@ -497,7 +469,7 @@ namespace Common.Protobuf {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (UserId != other.UserId) return false;
+      if (PlayerId != other.PlayerId) return false;
       if (LoginKey != other.LoginKey) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -505,7 +477,7 @@ namespace Common.Protobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (UserId != 0) hash ^= UserId.GetHashCode();
+      if (PlayerId != 0) hash ^= PlayerId.GetHashCode();
       if (LoginKey.Length != 0) hash ^= LoginKey.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -520,9 +492,9 @@ namespace Common.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (UserId != 0) {
+      if (PlayerId != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(UserId);
+        output.WriteInt32(PlayerId);
       }
       if (LoginKey.Length != 0) {
         output.WriteRawTag(18);
@@ -536,8 +508,8 @@ namespace Common.Protobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (UserId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(UserId);
+      if (PlayerId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PlayerId);
       }
       if (LoginKey.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(LoginKey);
@@ -553,8 +525,8 @@ namespace Common.Protobuf {
       if (other == null) {
         return;
       }
-      if (other.UserId != 0) {
-        UserId = other.UserId;
+      if (other.PlayerId != 0) {
+        PlayerId = other.PlayerId;
       }
       if (other.LoginKey.Length != 0) {
         LoginKey = other.LoginKey;
@@ -571,7 +543,7 @@ namespace Common.Protobuf {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            UserId = input.ReadInt32();
+            PlayerId = input.ReadInt32();
             break;
           }
           case 18: {

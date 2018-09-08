@@ -55,8 +55,7 @@ message PlayerData {
 	int32 id = 1;
     string name = 2;
     string map_name = 3;
-    int32 money = 4;
-    int32 praise = 5;
+    map<int32, int64> attr_map = 4;
 }
 
 //地图数据

@@ -28,9 +28,9 @@ class PlayerHandleMgr
 
     private void AddHandler(Type type, PlayerHandler handler)
     {
-        this.server.GetSocket().AddHandler(type, delegate(IMessage data, int connect_id, int addition, List<int> user_id_list)
+        this.server.GetSocket().AddHandler(type, delegate(IMessage data, int connect_id, int addition, List<int> player_id_list)
         {
-            Player player = PlayerMgr.GetInstance().GetPlayerByUserId(addition);
+            Player player = PlayerMgr.GetInstance().GetPlayer(addition);
             if (player != null)
             {
                 handler(data, player);

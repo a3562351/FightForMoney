@@ -28,16 +28,6 @@ class Const
     public const int MSG_LEN_BYTES = 4;
 
     /// <summary>
-    /// 协议附加数据长度占用字节
-    /// </summary>
-    public const int MSG_ADDITION_BYTES = 4;
-
-    /// <summary>
-    /// 用户ID列表长度占用字节
-    /// </summary>
-    public const int MSG_USER_ID_LIST_BYTES = 4;
-
-    /// <summary>
     /// 最大连接ID
     /// </summary>
     public const int MAX_CONNECT_ID = 100000;
@@ -87,6 +77,8 @@ public class SceneId
     public const int MAIL = 60001;          //邮件
     public const int TEAM = 60002;          //组队
     public const int TRADE = 60003;         //交易
+    public const int CROSSFRIEND = 70001;   //跨服好友
+    public const int CROSSCHAT = 70002;     //跨服聊天
 }
 
 /// <summary>
@@ -298,9 +290,20 @@ class ItemRoom
     public const int BAG = 1;
 }
 
+/// <summary>
+/// 基础属性
+/// </summary>
+class BaseAttr
+{
+    public const int Money = 1;
+    public const int Praise = 2;
+    public const int MaxId = 2;
+}
 
+/// <summary>
+/// 战斗属性
+/// </summary>
+class BattleAttr
+{
 
-
-
-
-
+}

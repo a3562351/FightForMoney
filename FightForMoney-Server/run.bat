@@ -1,8 +1,10 @@
-color 0A && echo off
+﻿color 0A && echo off
 
 rem server_id server_type config_idx
 rem 路由服
 start "RouteServer" FightForMoney-Server.exe 101 1 "RouteServer101"
+
+ping -n 1 127.0.0.1>nul
 
 rem 登陆服
 start "LoginServer" FightForMoney-Server.exe 201 2 "LoginServer201"

@@ -6,7 +6,6 @@ delegate void PlayerIterAction(int player_id, Player player);
 
 class PlayerMgr {
     private static PlayerMgr Instance = null;
-    private Dictionary<int, int> user_id_to_player_id = new Dictionary<int, int>();
     private Dictionary<int, Player> player_map = new Dictionary<int, Player>();
 
     public static PlayerMgr GetInstance()
@@ -52,7 +51,6 @@ class PlayerMgr {
     public void AddPlayer(Player player)
     {
         this.player_map[player.GetId()] = player;
-        this.user_id_to_player_id[player.GetUserId()] = player.GetId();
     }
 
     public void DelPlayer(int player_id)
@@ -72,16 +70,6 @@ class PlayerMgr {
             return null;
         }
         return this.player_map[player_id];
-    }
-
-    public Player GetPlayerByUserId(int user_id)
-    {
-        if (!this.user_id_to_player_id.ContainsKey(user_id))
-        {
-            return null;
-        }
-        int player_id = this.user_id_to_player_id[user_id];
-        return this.GetPlayer(player_id);
     }
 
     public void SavePlayer()

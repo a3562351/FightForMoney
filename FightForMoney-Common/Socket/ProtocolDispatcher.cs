@@ -2,8 +2,12 @@
 using System;
 using System.Collections.Generic;
 
-delegate void ClientHandler(IMessage protocol);
-delegate void Handler(IMessage protocol, int connect_id, int addition, List<int> user_id_list);
+//Server-To-Server Handler
+delegate void Handler(IMessage protocol, int connect_id, int addition, List<int> player_id_list);
+//Server-To-Client Handler
+delegate void SCHandler(IMessage protocol);
+//Client-To-Server Handler
+delegate void CSHandler(IMessage protocol, int connect_id, int addition);
 
 class ProtocolDispatcher
 {
@@ -14,7 +18,21 @@ class ProtocolDispatcher
         this.handle_map[type] = handler;
     }
 
-    public void Dispatch(IMessage protocol, int connect_id, int addition, List<int> user_id_list)
+    public void AddSCHandle(Type type, SCHandler handler)
+    {
+        this.AddHandler(type, delegate (IMessage protocol, int connect_id, int addition, List<int> player_id_list) {
+            handler(protocol);
+        });
+    }
+
+    public void AddCSHandler(Type type, CSHandler handler)
+    {
+        this.AddHandler(type, delegate (IMessage protocol, int connect_id, int addition, List<int> player_id_list) {
+            handler(protocol, connect_id, addition);
+        });
+    }
+
+    public void Dispatch(IMessage protocol, int connect_id, int addition, List<int> player_id_list)
     {
         Type type = protocol.GetType();
         if (!handle_map.ContainsKey(type))
@@ -24,6 +42,6 @@ class ProtocolDispatcher
         }
 
         Handler handler = handle_map[type];
-        handler(protocol, connect_id, addition, user_id_list);
+        handler(protocol, connect_id, addition, player_id_list);
     }
 }

@@ -22,7 +22,7 @@ class ItemCtrl : CtrlBase
     public override void Init()
     {
         base.Init();
-        ClientSocket.GetInstance().AddHandler(typeof(SCItemData), this.SCItemData);
+        ClientSocket.GetInstance().AddSCHandler(typeof(SCItemData), this.SCItemData);
     }
 
     private void SCItemData(object data)

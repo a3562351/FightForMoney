@@ -10,8 +10,10 @@ class NoticeCode
     public const int NotExistPlayer = -3;
     public const int RepeatLogin = -4;
     public const int BeRepeatLogin = -5;
+    public const int ReConnectFail = -6;
 
     public const int LoginSucc = 1;
+    public const int ReconnectSucc = 2;
 
     private static Dictionary<int, string> NoticeMap = new Dictionary<int, string>() {
         { NotExistAccount, "账号不存在"},
@@ -19,7 +21,10 @@ class NoticeCode
         { NotExistPlayer, "角色不存在"},
         { RepeatLogin, "重复登陆"},
         { BeRepeatLogin, "被顶号{0}"},
+        { ReConnectFail, "重连失败"},
+
         { LoginSucc, "登陆成功"},
+        { ReconnectSucc, "重连成功"},
     };
 
     public static string GetStr(int code)

@@ -24,20 +24,21 @@ namespace Common.Protobuf {
     static PlayerReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "CgxQbGF5ZXIucHJvdG8SD2NvbW1vbi5wcm90b2J1ZhoKRGF0YS5wcm90byI3",
-            "Cg5DU0NyZWF0ZVBsYXllchITCgtwbGF5ZXJfbmFtZRgBIAEoCRIQCghtYXBf",
-            "bmFtZRgCIAEoCSIhCgxDU0xvYWRQbGF5ZXISEQoJcGxheWVyX2lkGAEgASgF",
-            "IkAKDFNDUGxheWVyTGlzdBIwCgtwbGF5ZXJfbGlzdBgBIAMoCzIbLmNvbW1v",
-            "bi5wcm90b2J1Zi5QbGF5ZXJJbmZvIkYKClBsYXllckluZm8SEQoJcGxheWVy",
-            "X2lkGAEgASgFEhMKC3BsYXllcl9uYW1lGAIgASgJEhAKCG1hcF9uYW1lGAMg",
-            "ASgJIkQKDFNDUGxheWVySW5mbxI0Cg1wbGF5ZXJfc3RydWN0GAEgASgLMh0u",
-            "Y29tbW9uLnByb3RvYnVmLlBsYXllclN0cnVjdCIgCgxTQ1NjZW5lRW50ZXIS",
-            "EAoIbWFwX25hbWUYASABKAkiDgoMQ1NTY2VuZUVudGVyYgZwcm90bzM="));
+            "CgxQbGF5ZXIucHJvdG8SD2NvbW1vbi5wcm90b2J1ZhoKRGF0YS5wcm90byJI",
+            "Cg5DU0NyZWF0ZVBsYXllchIPCgd1c2VyX2lkGAEgASgFEhMKC3BsYXllcl9u",
+            "YW1lGAIgASgJEhAKCG1hcF9uYW1lGAMgASgJIjIKDENTTG9hZFBsYXllchIP",
+            "Cgd1c2VyX2lkGAEgASgFEhEKCXBsYXllcl9pZBgCIAEoBSJACgxTQ1BsYXll",
+            "ckxpc3QSMAoLcGxheWVyX2xpc3QYASADKAsyGy5jb21tb24ucHJvdG9idWYu",
+            "UGxheWVySW5mbyJGCgpQbGF5ZXJJbmZvEhEKCXBsYXllcl9pZBgBIAEoBRIT",
+            "CgtwbGF5ZXJfbmFtZRgCIAEoCRIQCghtYXBfbmFtZRgDIAEoCSJECgxTQ1Bs",
+            "YXllckluZm8SNAoNcGxheWVyX3N0cnVjdBgBIAEoCzIdLmNvbW1vbi5wcm90",
+            "b2J1Zi5QbGF5ZXJTdHJ1Y3QiIAoMU0NTY2VuZUVudGVyEhAKCG1hcF9uYW1l",
+            "GAEgASgJIg4KDENTU2NlbmVFbnRlcmIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Common.Protobuf.DataReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.CSCreatePlayer), global::Common.Protobuf.CSCreatePlayer.Parser, new[]{ "PlayerName", "MapName" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.CSLoadPlayer), global::Common.Protobuf.CSLoadPlayer.Parser, new[]{ "PlayerId" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.CSCreatePlayer), global::Common.Protobuf.CSCreatePlayer.Parser, new[]{ "UserId", "PlayerName", "MapName" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.CSLoadPlayer), global::Common.Protobuf.CSLoadPlayer.Parser, new[]{ "UserId", "PlayerId" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.SCPlayerList), global::Common.Protobuf.SCPlayerList.Parser, new[]{ "PlayerList" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.PlayerInfo), global::Common.Protobuf.PlayerInfo.Parser, new[]{ "PlayerId", "PlayerName", "MapName" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.SCPlayerInfo), global::Common.Protobuf.SCPlayerInfo.Parser, new[]{ "PlayerStruct" }, null, null, null),
@@ -49,9 +50,6 @@ namespace Common.Protobuf {
 
   }
   #region Messages
-  /// <summary>
-  ///[20001]创建玩家
-  /// </summary>
   public sealed partial class CSCreatePlayer : pb::IMessage<CSCreatePlayer> {
     private static readonly pb::MessageParser<CSCreatePlayer> _parser = new pb::MessageParser<CSCreatePlayer>(() => new CSCreatePlayer());
     private pb::UnknownFieldSet _unknownFields;
@@ -77,6 +75,7 @@ namespace Common.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public CSCreatePlayer(CSCreatePlayer other) : this() {
+      userId_ = other.userId_;
       playerName_ = other.playerName_;
       mapName_ = other.mapName_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -87,8 +86,19 @@ namespace Common.Protobuf {
       return new CSCreatePlayer(this);
     }
 
+    /// <summary>Field number for the "user_id" field.</summary>
+    public const int UserIdFieldNumber = 1;
+    private int userId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int UserId {
+      get { return userId_; }
+      set {
+        userId_ = value;
+      }
+    }
+
     /// <summary>Field number for the "player_name" field.</summary>
-    public const int PlayerNameFieldNumber = 1;
+    public const int PlayerNameFieldNumber = 2;
     private string playerName_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string PlayerName {
@@ -99,7 +109,7 @@ namespace Common.Protobuf {
     }
 
     /// <summary>Field number for the "map_name" field.</summary>
-    public const int MapNameFieldNumber = 2;
+    public const int MapNameFieldNumber = 3;
     private string mapName_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string MapName {
@@ -122,6 +132,7 @@ namespace Common.Protobuf {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (UserId != other.UserId) return false;
       if (PlayerName != other.PlayerName) return false;
       if (MapName != other.MapName) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -130,6 +141,7 @@ namespace Common.Protobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (UserId != 0) hash ^= UserId.GetHashCode();
       if (PlayerName.Length != 0) hash ^= PlayerName.GetHashCode();
       if (MapName.Length != 0) hash ^= MapName.GetHashCode();
       if (_unknownFields != null) {
@@ -145,12 +157,16 @@ namespace Common.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+      if (UserId != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(UserId);
+      }
       if (PlayerName.Length != 0) {
-        output.WriteRawTag(10);
+        output.WriteRawTag(18);
         output.WriteString(PlayerName);
       }
       if (MapName.Length != 0) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(26);
         output.WriteString(MapName);
       }
       if (_unknownFields != null) {
@@ -161,6 +177,9 @@ namespace Common.Protobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (UserId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(UserId);
+      }
       if (PlayerName.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(PlayerName);
       }
@@ -177,6 +196,9 @@ namespace Common.Protobuf {
     public void MergeFrom(CSCreatePlayer other) {
       if (other == null) {
         return;
+      }
+      if (other.UserId != 0) {
+        UserId = other.UserId;
       }
       if (other.PlayerName.Length != 0) {
         PlayerName = other.PlayerName;
@@ -195,11 +217,15 @@ namespace Common.Protobuf {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            PlayerName = input.ReadString();
+          case 8: {
+            UserId = input.ReadInt32();
             break;
           }
           case 18: {
+            PlayerName = input.ReadString();
+            break;
+          }
+          case 26: {
             MapName = input.ReadString();
             break;
           }
@@ -209,9 +235,6 @@ namespace Common.Protobuf {
 
   }
 
-  /// <summary>
-  ///[20001]加载玩家
-  /// </summary>
   public sealed partial class CSLoadPlayer : pb::IMessage<CSLoadPlayer> {
     private static readonly pb::MessageParser<CSLoadPlayer> _parser = new pb::MessageParser<CSLoadPlayer>(() => new CSLoadPlayer());
     private pb::UnknownFieldSet _unknownFields;
@@ -237,6 +260,7 @@ namespace Common.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public CSLoadPlayer(CSLoadPlayer other) : this() {
+      userId_ = other.userId_;
       playerId_ = other.playerId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -246,8 +270,19 @@ namespace Common.Protobuf {
       return new CSLoadPlayer(this);
     }
 
+    /// <summary>Field number for the "user_id" field.</summary>
+    public const int UserIdFieldNumber = 1;
+    private int userId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int UserId {
+      get { return userId_; }
+      set {
+        userId_ = value;
+      }
+    }
+
     /// <summary>Field number for the "player_id" field.</summary>
-    public const int PlayerIdFieldNumber = 1;
+    public const int PlayerIdFieldNumber = 2;
     private int playerId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int PlayerId {
@@ -270,6 +305,7 @@ namespace Common.Protobuf {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (UserId != other.UserId) return false;
       if (PlayerId != other.PlayerId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -277,6 +313,7 @@ namespace Common.Protobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (UserId != 0) hash ^= UserId.GetHashCode();
       if (PlayerId != 0) hash ^= PlayerId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -291,8 +328,12 @@ namespace Common.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (PlayerId != 0) {
+      if (UserId != 0) {
         output.WriteRawTag(8);
+        output.WriteInt32(UserId);
+      }
+      if (PlayerId != 0) {
+        output.WriteRawTag(16);
         output.WriteInt32(PlayerId);
       }
       if (_unknownFields != null) {
@@ -303,6 +344,9 @@ namespace Common.Protobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (UserId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(UserId);
+      }
       if (PlayerId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(PlayerId);
       }
@@ -316,6 +360,9 @@ namespace Common.Protobuf {
     public void MergeFrom(CSLoadPlayer other) {
       if (other == null) {
         return;
+      }
+      if (other.UserId != 0) {
+        UserId = other.UserId;
       }
       if (other.PlayerId != 0) {
         PlayerId = other.PlayerId;
@@ -332,6 +379,10 @@ namespace Common.Protobuf {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
+            UserId = input.ReadInt32();
+            break;
+          }
+          case 16: {
             PlayerId = input.ReadInt32();
             break;
           }

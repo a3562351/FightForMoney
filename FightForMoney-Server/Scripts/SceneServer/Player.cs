@@ -6,8 +6,6 @@ using System.Collections.Generic;
 delegate void ModuleIterAction(ModuleIdx idx, ModuleBase module);
 
 class Player {
-    private SceneServer server;
-    private int user_id;
     private PlayerData player_data = new PlayerData();
     private Dictionary<ModuleIdx, ModuleBase> module_map = new Dictionary<ModuleIdx, ModuleBase>();
     private bool is_online = true;
@@ -22,10 +20,7 @@ class Player {
         }
     }
 
-    public Player(SceneServer server, int user_id){
-        this.server = server;
-        this.user_id = user_id;
-
+    public Player(){
         this.module_map[ModuleIdx.Map] = new ModMap(Module.Map, this);
         this.module_map[ModuleIdx.Item] = new ModItem(Module.Item, this);
         this.module_map[ModuleIdx.Shop] = new ModShop(Module.Shop, this);
@@ -90,11 +85,6 @@ class Player {
         return this.player_data;
     }
 
-    public int GetUserId()
-    {
-        return this.user_id;
-    }
-
     public bool IsOnline()
     {
         return this.is_online;
@@ -134,40 +124,33 @@ class Player {
         return this.player_data.Name;
     }
 
-    public int GetMoney()
+    public long GetAttr(int attr_id)
     {
-        return this.player_data.Money;
+        if (!this.player_data.AttrMap.ContainsKey(attr_id))
+        {
+            return 0;
+        }
+        return this.player_data.AttrMap[attr_id];
     }
 
-    public int GetPraise()
+    public bool CheckAttr(int attr_id, long value)
     {
-        return this.player_data.Praise;
+        return this.GetAttr(attr_id) + value >= 0;
     }
 
-    public bool ChangeMoney(int value)
+    public void ChangeAttr(int attr_id, long value)
     {
-        int have_money = this.player_data.Money;
-        int new_money = have_money + value;
-        if (new_money < 0) return false;
+        if(attr_id < 1 || attr_id > BaseAttr.MaxId)
+        {
+            Log.ErrorFormat("ChangeAttr Not AttrId:{0} Value:{1}", attr_id, value);
+            return;
+        }
 
-        this.player_data.Money = new_money;
+        long old_value = this.GetAttr(attr_id);
+        long new_value = old_value + value;
+        this.player_data.AttrMap[attr_id] = new_value;
         this.ModuleLog(Module.Player, System.Reflection.MethodBase.GetCurrentMethod().Name,
-            string.Format("have:{1} new:{2}", have_money, new_money));
-
-        return true;
-    }
-
-    public bool ChangePraise(int value)
-    {
-        int have_praise = this.player_data.Praise;
-        int new_praise = have_praise + value;
-        if (new_praise < 0) return false;
-
-        this.player_data.Praise = new_praise;
-        this.ModuleLog(Module.Player, System.Reflection.MethodBase.GetCurrentMethod().Name,
-            string.Format("have:{1} new:{2}", have_praise, new_praise));
-
-        return true;
+            string.Format("attr_id:{0} old:{1} new:{2}", attr_id, old_value, new_value));
     }
 
     public ModuleBase GetModule(ModuleIdx idx)
@@ -191,7 +174,7 @@ class Player {
     {
         if (this.is_online)
         {
-            this.server.GetSocket().SendMsgToRoute(protocol, this.user_id);
+            Server.GetInstance().GetServer<SceneServer>().GetSocket().SendMsgToRoute(protocol, this.GetId());
         }
     }
 

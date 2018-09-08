@@ -11,7 +11,12 @@ class MsgHandler
         this.dispatcher.AddHandler(type, handler);
     }
 
-    public virtual void Handle(IMessage protocol, int connect_id, int addition, List<int> user_id_list)
+    public void AddCSHandler(Type type, CSHandler handler)
+    {
+        this.dispatcher.AddCSHandler(type, handler);
+    }
+
+    public virtual void Handle(IMessage protocol, int connect_id, int addition, List<int> player_id_list)
     {
 
     }

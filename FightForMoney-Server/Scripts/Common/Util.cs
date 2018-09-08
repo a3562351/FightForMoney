@@ -72,6 +72,11 @@ public class Log
         Logger.Warn(str);
     }
 
+    public static void WarnFormat(string str, params object[] str_list)
+    {
+        Logger.WarnFormat(str, str_list);
+    }
+
     /// <summary>
     /// 错误打印
     /// </summary>
@@ -79,6 +84,11 @@ public class Log
     {
         string str = MergeStr(str_list);
         Logger.Error(str);
+    }
+
+    public static void ErrorFormat(string str, params object[] str_list)
+    {
+        Logger.ErrorFormat(str, str_list);
     }
 
     /// <summary>
@@ -92,7 +102,7 @@ public class Log
 
     public static void DebugFormat(string str, params object[] str_list)
     {
-        Logger.Debug(string.Format(str, str_list));
+        Logger.DebugFormat(str, str_list);
     }
 
     private static string MergeStr(params object[] str_list)

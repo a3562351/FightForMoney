@@ -47,11 +47,9 @@ class ClientSocket
         if (this.socket != null) this.socket.Close();
     }
 
-    public void AddHandler(Type type, ClientHandler handler)
+    public void AddSCHandler(Type type, SCHandler handler)
     {
-        this.dispatcher.AddHandler(type, delegate(IMessage protocol, int connect_id, int addition, List<int> user_id_list) {
-            handler(protocol);
-        });
+        this.dispatcher.AddSCHandle(type, handler);
     }
 
     private void ReceiveMsg()

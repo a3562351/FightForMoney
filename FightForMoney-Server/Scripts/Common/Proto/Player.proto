@@ -3,15 +3,15 @@ syntax = "proto3";
 package common.protobuf;
 import "Data.proto";
 
-//[20001]创建玩家
 message CSCreatePlayer{
-	string player_name = 1;
-	string map_name = 2;
+	int32 user_id = 1;
+	string player_name = 2;
+	string map_name = 3;
 }
 
-//[20001]加载玩家
 message CSLoadPlayer{
-	int32 player_id = 1;
+	int32 user_id = 1;
+	int32 player_id = 2;
 }
 
 //玩家列表返回

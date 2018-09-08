@@ -6,14 +6,11 @@ using System.Collections.Generic;
 
 class RouteServer : ServerBase
 {
-    private UserMgr user_mgr;
-
     public RouteServer(int server_id, JToken config) : base(server_id, ServerType.ROUTE)
     {
         this.route_ip = config["Ip"].ToString();
         this.route_port = int.Parse(config["Port"].ToString());
         this.socket = new ServerSocket(this, new RouteMsgHandler(this));
-        this.user_mgr = new UserMgr(this);
     }
 
     public override void Init()
@@ -23,17 +20,12 @@ class RouteServer : ServerBase
 
     public override void Update(int dt)
     {
-        this.user_mgr.Update(dt);
+
     }
 
     public override void Release()
     {
 
-    }
-
-    public UserMgr GetUserMgr()
-    {
-        return this.user_mgr;
     }
 
     public void DispatchToServer(int connect_id)

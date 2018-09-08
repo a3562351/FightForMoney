@@ -42,32 +42,34 @@ namespace Common.Protobuf {
             "ZmZfZGF0YRgFIAEoCzIaLmNvbW1vbi5wcm90b2J1Zi5TdGFmZkRhdGESLgoK",
             "ZXF1aXBfZGF0YRgGIAEoCzIaLmNvbW1vbi5wcm90b2J1Zi5FcXVpcERhdGES",
             "LgoKdHJ1Y2tfZGF0YRgHIAEoCzIaLmNvbW1vbi5wcm90b2J1Zi5UcnVja0Rh",
-            "dGEiVwoKUGxheWVyRGF0YRIKCgJpZBgBIAEoBRIMCgRuYW1lGAIgASgJEhAK",
-            "CG1hcF9uYW1lGAMgASgJEg0KBW1vbmV5GAQgASgFEg4KBnByYWlzZRgFIAEo",
-            "BSKDAQoHTWFwRGF0YRIuCgNtYXAYASADKAsyIS5jb21tb24ucHJvdG9idWYu",
-            "TWFwRGF0YS5NYXBFbnRyeRpICghNYXBFbnRyeRILCgNrZXkYASABKAkSKwoF",
-            "dmFsdWUYAiABKAsyHC5jb21tb24ucHJvdG9idWYuTWFwRGF0YVVuaXQ6AjgB",
-            "IncKC01hcERhdGFVbml0EjUKDHRlcnJhaW5fbGlzdBgBIAMoCzIfLmNvbW1v",
-            "bi5wcm90b2J1Zi5NYXBUZXJyYWluRGF0YRIxCgpidWlsZF9saXN0GAIgAygL",
-            "Mh0uY29tbW9uLnByb3RvYnVmLk1hcEJ1aWxkRGF0YSIhCg5NYXBUZXJyYWlu",
-            "RGF0YRIPCgdncmlkX2lkGAEgASgFIh8KDE1hcEJ1aWxkRGF0YRIPCgdncmlk",
-            "X2lkGAEgASgFIpYBCghJdGVtRGF0YRIPCgd2ZXJzaW9uGAEgASgFEgwKBGdy",
-            "aWQYAiABKAUSOgoJaXRlbV9saXN0GAMgAygLMicuY29tbW9uLnByb3RvYnVm",
-            "Lkl0ZW1EYXRhLkl0ZW1MaXN0RW50cnkaLwoNSXRlbUxpc3RFbnRyeRILCgNr",
-            "ZXkYASABKAUSDQoFdmFsdWUYAiABKAU6AjgBIi8KCFNob3BEYXRhEhAKCGNh",
-            "cGFjaXR5GAEgASgFEhEKCWl0ZW1fbGlzdBgCIAMoBSI7CglTdGFmZkRhdGES",
-            "LgoKc3RhZmZfbGlzdBgBIAMoCzIaLmNvbW1vbi5wcm90b2J1Zi5TdGFmZklu",
-            "Zm8iKQoJU3RhZmZJbmZvEgoKAmlkGAEgASgFEhAKCGVuZF90aW1lGAIgASgF",
-            "IjoKBEF0dHISCgoCaHAYASABKAUSCgoCbXAYAiABKAUSDAoEZm9vZBgDIAEo",
-            "BRIMCgRtb29kGAQgASgFIk0KCUVxdWlwRGF0YRIQCghjYXBhY2l0eRgBIAEo",
-            "BRIuCgplcXVpcF9saXN0GAIgAygLMhouY29tbW9uLnByb3RvYnVmLkVxdWlw",
-            "SW5mbyIXCglFcXVpcEluZm8SCgoCaWQYASABKAUiOwoJVHJ1Y2tEYXRhEi4K",
-            "CnRydWNrX2xpc3QYASADKAsyGi5jb21tb24ucHJvdG9idWYuVHJ1Y2tJbmZv",
-            "IikKCVRydWNrSW5mbxIKCgJpZBgBIAEoBRIQCghlbmRfdGltZRgCIAEoBSIm",
-            "CgpDaGF0UGxheWVyEgoKAmlkGAEgASgFEgwKBG5hbWUYAiABKAkiWwoIQ2hh",
-            "dERhdGESMAoLY2hhdF9wbGF5ZXIYASABKAsyGy5jb21tb24ucHJvdG9idWYu",
-            "Q2hhdFBsYXllchIPCgdjb250ZW50GAIgASgJEgwKBHRpbWUYAyABKAUiGwoL",
-            "U2V0dGluZ0RhdGESDAoEbGFuZxgBIAEoCWIGcHJvdG8z"));
+            "dGEipAEKClBsYXllckRhdGESCgoCaWQYASABKAUSDAoEbmFtZRgCIAEoCRIQ",
+            "CghtYXBfbmFtZRgDIAEoCRI6CghhdHRyX21hcBgEIAMoCzIoLmNvbW1vbi5w",
+            "cm90b2J1Zi5QbGF5ZXJEYXRhLkF0dHJNYXBFbnRyeRouCgxBdHRyTWFwRW50",
+            "cnkSCwoDa2V5GAEgASgFEg0KBXZhbHVlGAIgASgDOgI4ASKDAQoHTWFwRGF0",
+            "YRIuCgNtYXAYASADKAsyIS5jb21tb24ucHJvdG9idWYuTWFwRGF0YS5NYXBF",
+            "bnRyeRpICghNYXBFbnRyeRILCgNrZXkYASABKAkSKwoFdmFsdWUYAiABKAsy",
+            "HC5jb21tb24ucHJvdG9idWYuTWFwRGF0YVVuaXQ6AjgBIncKC01hcERhdGFV",
+            "bml0EjUKDHRlcnJhaW5fbGlzdBgBIAMoCzIfLmNvbW1vbi5wcm90b2J1Zi5N",
+            "YXBUZXJyYWluRGF0YRIxCgpidWlsZF9saXN0GAIgAygLMh0uY29tbW9uLnBy",
+            "b3RvYnVmLk1hcEJ1aWxkRGF0YSIhCg5NYXBUZXJyYWluRGF0YRIPCgdncmlk",
+            "X2lkGAEgASgFIh8KDE1hcEJ1aWxkRGF0YRIPCgdncmlkX2lkGAEgASgFIpYB",
+            "CghJdGVtRGF0YRIPCgd2ZXJzaW9uGAEgASgFEgwKBGdyaWQYAiABKAUSOgoJ",
+            "aXRlbV9saXN0GAMgAygLMicuY29tbW9uLnByb3RvYnVmLkl0ZW1EYXRhLkl0",
+            "ZW1MaXN0RW50cnkaLwoNSXRlbUxpc3RFbnRyeRILCgNrZXkYASABKAUSDQoF",
+            "dmFsdWUYAiABKAU6AjgBIi8KCFNob3BEYXRhEhAKCGNhcGFjaXR5GAEgASgF",
+            "EhEKCWl0ZW1fbGlzdBgCIAMoBSI7CglTdGFmZkRhdGESLgoKc3RhZmZfbGlz",
+            "dBgBIAMoCzIaLmNvbW1vbi5wcm90b2J1Zi5TdGFmZkluZm8iKQoJU3RhZmZJ",
+            "bmZvEgoKAmlkGAEgASgFEhAKCGVuZF90aW1lGAIgASgFIjoKBEF0dHISCgoC",
+            "aHAYASABKAUSCgoCbXAYAiABKAUSDAoEZm9vZBgDIAEoBRIMCgRtb29kGAQg",
+            "ASgFIk0KCUVxdWlwRGF0YRIQCghjYXBhY2l0eRgBIAEoBRIuCgplcXVpcF9s",
+            "aXN0GAIgAygLMhouY29tbW9uLnByb3RvYnVmLkVxdWlwSW5mbyIXCglFcXVp",
+            "cEluZm8SCgoCaWQYASABKAUiOwoJVHJ1Y2tEYXRhEi4KCnRydWNrX2xpc3QY",
+            "ASADKAsyGi5jb21tb24ucHJvdG9idWYuVHJ1Y2tJbmZvIikKCVRydWNrSW5m",
+            "bxIKCgJpZBgBIAEoBRIQCghlbmRfdGltZRgCIAEoBSImCgpDaGF0UGxheWVy",
+            "EgoKAmlkGAEgASgFEgwKBG5hbWUYAiABKAkiWwoIQ2hhdERhdGESMAoLY2hh",
+            "dF9wbGF5ZXIYASABKAsyGy5jb21tb24ucHJvdG9idWYuQ2hhdFBsYXllchIP",
+            "Cgdjb250ZW50GAIgASgJEgwKBHRpbWUYAyABKAUiGwoLU2V0dGluZ0RhdGES",
+            "DAoEbGFuZxgBIAEoCWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -78,7 +80,7 @@ namespace Common.Protobuf {
             new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.AccountInfo), global::Common.Protobuf.AccountInfo.Parser, new[]{ "Account", "Password", "CreateTime", "UserId" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.UserInfo), global::Common.Protobuf.UserInfo.Parser, new[]{ "UserId", "PlayerIdList", "LoginTime", "LogoutTime" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.PlayerStruct), global::Common.Protobuf.PlayerStruct.Parser, new[]{ "PlayerData", "MapData", "ItemData", "ShopData", "StaffData", "EquipData", "TruckData" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.PlayerData), global::Common.Protobuf.PlayerData.Parser, new[]{ "Id", "Name", "MapName", "Money", "Praise" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.PlayerData), global::Common.Protobuf.PlayerData.Parser, new[]{ "Id", "Name", "MapName", "AttrMap" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
             new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.MapData), global::Common.Protobuf.MapData.Parser, new[]{ "Map" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
             new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.MapDataUnit), global::Common.Protobuf.MapDataUnit.Parser, new[]{ "TerrainList", "BuildList" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.MapTerrainData), global::Common.Protobuf.MapTerrainData.Parser, new[]{ "GridId" }, null, null, null),
@@ -1391,8 +1393,7 @@ namespace Common.Protobuf {
       id_ = other.id_;
       name_ = other.name_;
       mapName_ = other.mapName_;
-      money_ = other.money_;
-      praise_ = other.praise_;
+      attrMap_ = other.attrMap_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1434,26 +1435,14 @@ namespace Common.Protobuf {
       }
     }
 
-    /// <summary>Field number for the "money" field.</summary>
-    public const int MoneyFieldNumber = 4;
-    private int money_;
+    /// <summary>Field number for the "attr_map" field.</summary>
+    public const int AttrMapFieldNumber = 4;
+    private static readonly pbc::MapField<int, long>.Codec _map_attrMap_codec
+        = new pbc::MapField<int, long>.Codec(pb::FieldCodec.ForInt32(8), pb::FieldCodec.ForInt64(16), 34);
+    private readonly pbc::MapField<int, long> attrMap_ = new pbc::MapField<int, long>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Money {
-      get { return money_; }
-      set {
-        money_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "praise" field.</summary>
-    public const int PraiseFieldNumber = 5;
-    private int praise_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Praise {
-      get { return praise_; }
-      set {
-        praise_ = value;
-      }
+    public pbc::MapField<int, long> AttrMap {
+      get { return attrMap_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1472,8 +1461,7 @@ namespace Common.Protobuf {
       if (Id != other.Id) return false;
       if (Name != other.Name) return false;
       if (MapName != other.MapName) return false;
-      if (Money != other.Money) return false;
-      if (Praise != other.Praise) return false;
+      if (!AttrMap.Equals(other.AttrMap)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1483,8 +1471,7 @@ namespace Common.Protobuf {
       if (Id != 0) hash ^= Id.GetHashCode();
       if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (MapName.Length != 0) hash ^= MapName.GetHashCode();
-      if (Money != 0) hash ^= Money.GetHashCode();
-      if (Praise != 0) hash ^= Praise.GetHashCode();
+      hash ^= AttrMap.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1510,14 +1497,7 @@ namespace Common.Protobuf {
         output.WriteRawTag(26);
         output.WriteString(MapName);
       }
-      if (Money != 0) {
-        output.WriteRawTag(32);
-        output.WriteInt32(Money);
-      }
-      if (Praise != 0) {
-        output.WriteRawTag(40);
-        output.WriteInt32(Praise);
-      }
+      attrMap_.WriteTo(output, _map_attrMap_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1535,12 +1515,7 @@ namespace Common.Protobuf {
       if (MapName.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(MapName);
       }
-      if (Money != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Money);
-      }
-      if (Praise != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Praise);
-      }
+      size += attrMap_.CalculateSize(_map_attrMap_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -1561,12 +1536,7 @@ namespace Common.Protobuf {
       if (other.MapName.Length != 0) {
         MapName = other.MapName;
       }
-      if (other.Money != 0) {
-        Money = other.Money;
-      }
-      if (other.Praise != 0) {
-        Praise = other.Praise;
-      }
+      attrMap_.Add(other.attrMap_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -1590,12 +1560,8 @@ namespace Common.Protobuf {
             MapName = input.ReadString();
             break;
           }
-          case 32: {
-            Money = input.ReadInt32();
-            break;
-          }
-          case 40: {
-            Praise = input.ReadInt32();
+          case 34: {
+            attrMap_.AddEntriesFrom(input, _map_attrMap_codec);
             break;
           }
         }

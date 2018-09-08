@@ -10,6 +10,7 @@ using System.Threading;
 
 class Server {
     private static Server Instance = null;
+    private ServerBase server;
 
     public static Server GetInstance()
     {
@@ -18,6 +19,16 @@ class Server {
             Instance = new Server();
         }
         return Instance;
+    }
+
+    public T GetServer<T>() where T : ServerBase
+    {
+        return this.server as T;
+    }
+
+    public ServerSocket GetSocket()
+    {
+        return this.server.GetSocket();
     }
 
     private void InitPath()
@@ -48,49 +59,48 @@ class Server {
         string json = Global.ParseFileToJson(PathTool.GetServerConfigPath(config_name));
         JObject config = JObject.Parse(json);
 
-        ServerBase server = null;
         switch (server_type)
         {
             case ServerType.ROUTE:
                 {
-                    server = new RouteServer(server_id, config);
+                    this.server = new RouteServer(server_id, config);
                     Log.Info("RunTime", "RouteServer!!!");
                 }
                 break;
 
             case ServerType.LOGIN:
                 {
-                    server = new LoginServer(server_id, config);
+                    this.server = new LoginServer(server_id, config);
                     Log.Info("RunTime", "LoginServer!!!");
                 }
                 break;
 
             case ServerType.CHAT:
                 {
-                    server = new ChatServer(server_id, config);
+                    this.server = new ChatServer(server_id, config);
                     Log.Info("RunTime", "ChatServer!!!");
                 }
                 break;
             case ServerType.MAIN:
                 {
-                    server = new SceneServer(server_id, config);
+                    this.server = new SceneServer(server_id, config);
                     Log.Info("RunTime", "MainServer!!!");
                 }
                 break;
             case ServerType.INSTANCE:
                 {
-                    server = new SceneServer(server_id, config);
+                    this.server = new SceneServer(server_id, config);
                     Log.Info("RunTime", "InstanceServer!!!");
                 }
                 break;
             case ServerType.COMMON:
                 {
-                    server = new CommonServer(server_id, config);
+                    this.server = new CommonServer(server_id, config);
                     Log.Info("RunTime", "CommonServer!!!");
                 }
                 break;
         }
 
-        server.Init();
+        this.server.Init();
     }
 }

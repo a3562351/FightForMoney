@@ -122,7 +122,7 @@
     <Compile Include="Scripts\LoginServer\LoginServer.cs" />
     <Compile Include="Scripts\RouteServer\RouteMsgHandler.cs" />
     <Compile Include="Scripts\RouteServer\RouteServer.cs" />
-    <Compile Include="Scripts\RouteServer\UserMgr.cs" />
+    <Compile Include="Scripts\RouteServer\RouteUserMgr.cs" />
     <Compile Include="Scripts\SceneServer\Entity\AI.cs" />
     <Compile Include="Scripts\SceneServer\Entity\Aura.cs" />
     <Compile Include="Scripts\SceneServer\Entity\Drop.cs" />
