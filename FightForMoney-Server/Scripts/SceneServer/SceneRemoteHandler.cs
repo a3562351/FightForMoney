@@ -43,10 +43,20 @@ class SceneRemoteHandler : RemoteHandler
         PlayerMgr.GetInstance().AddPlayer(player);
         Log.Debug("Load PlayerId:" + player.GetId());
 
-        SRLoadPlayerComplete message = new SRLoadPlayerComplete();
-        message.PlayerId = player.GetId();
-        Server.GetInstance().GetSocket().SendMsgToRoute(message, connect_id_in_route);
+        //通知路由服绑定玩家ID，后续可用player_id发信息
+        {
+            SRLoadPlayerComplete protocol = new SRLoadPlayerComplete();
+            protocol.PlayerId = player.GetId();
+            protocol.ServerId = Server.GetInstance().GetServerId();
+            protocol.SceneId = SceneId.MAP;
+            Server.GetInstance().GetSocket().SendMsgToRoute(protocol, connect_id_in_route);
+        }
 
-        player.OnLogin();
+        //通知客户端进入场景
+        {
+            SCSceneEnter protocol = new SCSceneEnter();
+            protocol.MapName = player.GetPlayerData().MapName;
+            Server.GetInstance().GetSocket().SendMsgToRoute(protocol, player_id);
+        }
     }
 }

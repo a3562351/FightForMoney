@@ -52,24 +52,27 @@ namespace Common.Protobuf {
             "bml0EjUKDHRlcnJhaW5fbGlzdBgBIAMoCzIfLmNvbW1vbi5wcm90b2J1Zi5N",
             "YXBUZXJyYWluRGF0YRIxCgpidWlsZF9saXN0GAIgAygLMh0uY29tbW9uLnBy",
             "b3RvYnVmLk1hcEJ1aWxkRGF0YSIhCg5NYXBUZXJyYWluRGF0YRIPCgdncmlk",
-            "X2lkGAEgASgFIh8KDE1hcEJ1aWxkRGF0YRIPCgdncmlkX2lkGAEgASgFIpYB",
-            "CghJdGVtRGF0YRIPCgd2ZXJzaW9uGAEgASgFEgwKBGdyaWQYAiABKAUSOgoJ",
-            "aXRlbV9saXN0GAMgAygLMicuY29tbW9uLnByb3RvYnVmLkl0ZW1EYXRhLkl0",
-            "ZW1MaXN0RW50cnkaLwoNSXRlbUxpc3RFbnRyeRILCgNrZXkYASABKAUSDQoF",
-            "dmFsdWUYAiABKAU6AjgBIi8KCFNob3BEYXRhEhAKCGNhcGFjaXR5GAEgASgF",
-            "EhEKCWl0ZW1fbGlzdBgCIAMoBSI7CglTdGFmZkRhdGESLgoKc3RhZmZfbGlz",
-            "dBgBIAMoCzIaLmNvbW1vbi5wcm90b2J1Zi5TdGFmZkluZm8iKQoJU3RhZmZJ",
-            "bmZvEgoKAmlkGAEgASgFEhAKCGVuZF90aW1lGAIgASgFIjoKBEF0dHISCgoC",
-            "aHAYASABKAUSCgoCbXAYAiABKAUSDAoEZm9vZBgDIAEoBRIMCgRtb29kGAQg",
-            "ASgFIk0KCUVxdWlwRGF0YRIQCghjYXBhY2l0eRgBIAEoBRIuCgplcXVpcF9s",
-            "aXN0GAIgAygLMhouY29tbW9uLnByb3RvYnVmLkVxdWlwSW5mbyIXCglFcXVp",
-            "cEluZm8SCgoCaWQYASABKAUiOwoJVHJ1Y2tEYXRhEi4KCnRydWNrX2xpc3QY",
-            "ASADKAsyGi5jb21tb24ucHJvdG9idWYuVHJ1Y2tJbmZvIikKCVRydWNrSW5m",
-            "bxIKCgJpZBgBIAEoBRIQCghlbmRfdGltZRgCIAEoBSImCgpDaGF0UGxheWVy",
-            "EgoKAmlkGAEgASgFEgwKBG5hbWUYAiABKAkiWwoIQ2hhdERhdGESMAoLY2hh",
-            "dF9wbGF5ZXIYASABKAsyGy5jb21tb24ucHJvdG9idWYuQ2hhdFBsYXllchIP",
-            "Cgdjb250ZW50GAIgASgJEgwKBHRpbWUYAyABKAUiGwoLU2V0dGluZ0RhdGES",
-            "DAoEbGFuZxgBIAEoCWIGcHJvdG8z"));
+            "X2lkGAEgASgFIh8KDE1hcEJ1aWxkRGF0YRIPCgdncmlkX2lkGAEgASgFIqAB",
+            "CghJdGVtRGF0YRIMCgRncmlkGAEgASgFEjoKCWl0ZW1fbGlzdBgCIAMoCzIn",
+            "LmNvbW1vbi5wcm90b2J1Zi5JdGVtRGF0YS5JdGVtTGlzdEVudHJ5GkoKDUl0",
+            "ZW1MaXN0RW50cnkSCwoDa2V5GAEgASgDEigKBXZhbHVlGAIgASgLMhkuY29t",
+            "bW9uLnByb3RvYnVmLkl0ZW1JbmZvOgI4ASI4CghJdGVtSW5mbxIPCgdpdGVt",
+            "X2lkGAEgASgFEg0KBWNvdW50GAIgASgFEgwKBGJpbmQYAyABKAUiLwoIU2hv",
+            "cERhdGESEAoIY2FwYWNpdHkYASABKAUSEQoJaXRlbV9saXN0GAIgAygFIjsK",
+            "CVN0YWZmRGF0YRIuCgpzdGFmZl9saXN0GAEgAygLMhouY29tbW9uLnByb3Rv",
+            "YnVmLlN0YWZmSW5mbyIpCglTdGFmZkluZm8SCgoCaWQYASABKAUSEAoIZW5k",
+            "X3RpbWUYAiABKAUiOgoEQXR0chIKCgJocBgBIAEoBRIKCgJtcBgCIAEoBRIM",
+            "CgRmb29kGAMgASgFEgwKBG1vb2QYBCABKAUipgEKCUVxdWlwRGF0YRIMCgRn",
+            "cmlkGAEgASgFEj0KCmVxdWlwX2xpc3QYAiADKAsyKS5jb21tb24ucHJvdG9i",
+            "dWYuRXF1aXBEYXRhLkVxdWlwTGlzdEVudHJ5GkwKDkVxdWlwTGlzdEVudHJ5",
+            "EgsKA2tleRgBIAEoAxIpCgV2YWx1ZRgCIAEoCzIaLmNvbW1vbi5wcm90b2J1",
+            "Zi5FcXVpcEluZm86AjgBIhcKCUVxdWlwSW5mbxIKCgJpZBgBIAEoBSI7CglU",
+            "cnVja0RhdGESLgoKdHJ1Y2tfbGlzdBgBIAMoCzIaLmNvbW1vbi5wcm90b2J1",
+            "Zi5UcnVja0luZm8iKQoJVHJ1Y2tJbmZvEgoKAmlkGAEgASgFEhAKCGVuZF90",
+            "aW1lGAIgASgFIiYKCkNoYXRQbGF5ZXISCgoCaWQYASABKAUSDAoEbmFtZRgC",
+            "IAEoCSJbCghDaGF0RGF0YRIwCgtjaGF0X3BsYXllchgBIAEoCzIbLmNvbW1v",
+            "bi5wcm90b2J1Zi5DaGF0UGxheWVyEg8KB2NvbnRlbnQYAiABKAkSDAoEdGlt",
+            "ZRgDIAEoBSIbCgtTZXR0aW5nRGF0YRIMCgRsYW5nGAEgASgJYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -85,12 +88,13 @@ namespace Common.Protobuf {
             new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.MapDataUnit), global::Common.Protobuf.MapDataUnit.Parser, new[]{ "TerrainList", "BuildList" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.MapTerrainData), global::Common.Protobuf.MapTerrainData.Parser, new[]{ "GridId" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.MapBuildData), global::Common.Protobuf.MapBuildData.Parser, new[]{ "GridId" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.ItemData), global::Common.Protobuf.ItemData.Parser, new[]{ "Version", "Grid", "ItemList" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.ItemData), global::Common.Protobuf.ItemData.Parser, new[]{ "Grid", "ItemList" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.ItemInfo), global::Common.Protobuf.ItemInfo.Parser, new[]{ "ItemId", "Count", "Bind" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.ShopData), global::Common.Protobuf.ShopData.Parser, new[]{ "Capacity", "ItemList" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.StaffData), global::Common.Protobuf.StaffData.Parser, new[]{ "StaffList" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.StaffInfo), global::Common.Protobuf.StaffInfo.Parser, new[]{ "Id", "EndTime" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.Attr), global::Common.Protobuf.Attr.Parser, new[]{ "Hp", "Mp", "Food", "Mood" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.EquipData), global::Common.Protobuf.EquipData.Parser, new[]{ "Capacity", "EquipList" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.EquipData), global::Common.Protobuf.EquipData.Parser, new[]{ "Grid", "EquipList" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
             new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.EquipInfo), global::Common.Protobuf.EquipInfo.Parser, new[]{ "Id" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.TruckData), global::Common.Protobuf.TruckData.Parser, new[]{ "TruckList" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.TruckInfo), global::Common.Protobuf.TruckInfo.Parser, new[]{ "Id", "EndTime" }, null, null, null),
@@ -2130,7 +2134,6 @@ namespace Common.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public ItemData(ItemData other) : this() {
-      version_ = other.version_;
       grid_ = other.grid_;
       itemList_ = other.itemList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -2141,19 +2144,8 @@ namespace Common.Protobuf {
       return new ItemData(this);
     }
 
-    /// <summary>Field number for the "version" field.</summary>
-    public const int VersionFieldNumber = 1;
-    private int version_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Version {
-      get { return version_; }
-      set {
-        version_ = value;
-      }
-    }
-
     /// <summary>Field number for the "grid" field.</summary>
-    public const int GridFieldNumber = 2;
+    public const int GridFieldNumber = 1;
     private int grid_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int Grid {
@@ -2164,12 +2156,12 @@ namespace Common.Protobuf {
     }
 
     /// <summary>Field number for the "item_list" field.</summary>
-    public const int ItemListFieldNumber = 3;
-    private static readonly pbc::MapField<int, int>.Codec _map_itemList_codec
-        = new pbc::MapField<int, int>.Codec(pb::FieldCodec.ForInt32(8), pb::FieldCodec.ForInt32(16), 26);
-    private readonly pbc::MapField<int, int> itemList_ = new pbc::MapField<int, int>();
+    public const int ItemListFieldNumber = 2;
+    private static readonly pbc::MapField<long, global::Common.Protobuf.ItemInfo>.Codec _map_itemList_codec
+        = new pbc::MapField<long, global::Common.Protobuf.ItemInfo>.Codec(pb::FieldCodec.ForInt64(8), pb::FieldCodec.ForMessage(18, global::Common.Protobuf.ItemInfo.Parser), 18);
+    private readonly pbc::MapField<long, global::Common.Protobuf.ItemInfo> itemList_ = new pbc::MapField<long, global::Common.Protobuf.ItemInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::MapField<int, int> ItemList {
+    public pbc::MapField<long, global::Common.Protobuf.ItemInfo> ItemList {
       get { return itemList_; }
     }
 
@@ -2186,7 +2178,6 @@ namespace Common.Protobuf {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Version != other.Version) return false;
       if (Grid != other.Grid) return false;
       if (!ItemList.Equals(other.ItemList)) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -2195,7 +2186,6 @@ namespace Common.Protobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Version != 0) hash ^= Version.GetHashCode();
       if (Grid != 0) hash ^= Grid.GetHashCode();
       hash ^= ItemList.GetHashCode();
       if (_unknownFields != null) {
@@ -2211,12 +2201,8 @@ namespace Common.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Version != 0) {
-        output.WriteRawTag(8);
-        output.WriteInt32(Version);
-      }
       if (Grid != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt32(Grid);
       }
       itemList_.WriteTo(output, _map_itemList_codec);
@@ -2228,9 +2214,6 @@ namespace Common.Protobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Version != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Version);
-      }
       if (Grid != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Grid);
       }
@@ -2245,9 +2228,6 @@ namespace Common.Protobuf {
     public void MergeFrom(ItemData other) {
       if (other == null) {
         return;
-      }
-      if (other.Version != 0) {
-        Version = other.Version;
       }
       if (other.Grid != 0) {
         Grid = other.Grid;
@@ -2265,15 +2245,196 @@ namespace Common.Protobuf {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            Version = input.ReadInt32();
-            break;
-          }
-          case 16: {
             Grid = input.ReadInt32();
             break;
           }
-          case 26: {
+          case 18: {
             itemList_.AddEntriesFrom(input, _map_itemList_codec);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class ItemInfo : pb::IMessage<ItemInfo> {
+    private static readonly pb::MessageParser<ItemInfo> _parser = new pb::MessageParser<ItemInfo>(() => new ItemInfo());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ItemInfo> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Common.Protobuf.DataReflection.Descriptor.MessageTypes[13]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ItemInfo() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ItemInfo(ItemInfo other) : this() {
+      itemId_ = other.itemId_;
+      count_ = other.count_;
+      bind_ = other.bind_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ItemInfo Clone() {
+      return new ItemInfo(this);
+    }
+
+    /// <summary>Field number for the "item_id" field.</summary>
+    public const int ItemIdFieldNumber = 1;
+    private int itemId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int ItemId {
+      get { return itemId_; }
+      set {
+        itemId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "count" field.</summary>
+    public const int CountFieldNumber = 2;
+    private int count_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Count {
+      get { return count_; }
+      set {
+        count_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "bind" field.</summary>
+    public const int BindFieldNumber = 3;
+    private int bind_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Bind {
+      get { return bind_; }
+      set {
+        bind_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ItemInfo);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ItemInfo other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (ItemId != other.ItemId) return false;
+      if (Count != other.Count) return false;
+      if (Bind != other.Bind) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (ItemId != 0) hash ^= ItemId.GetHashCode();
+      if (Count != 0) hash ^= Count.GetHashCode();
+      if (Bind != 0) hash ^= Bind.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (ItemId != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(ItemId);
+      }
+      if (Count != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(Count);
+      }
+      if (Bind != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(Bind);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (ItemId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ItemId);
+      }
+      if (Count != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Count);
+      }
+      if (Bind != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Bind);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ItemInfo other) {
+      if (other == null) {
+        return;
+      }
+      if (other.ItemId != 0) {
+        ItemId = other.ItemId;
+      }
+      if (other.Count != 0) {
+        Count = other.Count;
+      }
+      if (other.Bind != 0) {
+        Bind = other.Bind;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            ItemId = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            Count = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            Bind = input.ReadInt32();
             break;
           }
         }
@@ -2293,7 +2454,7 @@ namespace Common.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Common.Protobuf.DataReflection.Descriptor.MessageTypes[13]; }
+      get { return global::Common.Protobuf.DataReflection.Descriptor.MessageTypes[14]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2446,7 +2607,7 @@ namespace Common.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Common.Protobuf.DataReflection.Descriptor.MessageTypes[14]; }
+      get { return global::Common.Protobuf.DataReflection.Descriptor.MessageTypes[15]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2567,7 +2728,7 @@ namespace Common.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Common.Protobuf.DataReflection.Descriptor.MessageTypes[15]; }
+      get { return global::Common.Protobuf.DataReflection.Descriptor.MessageTypes[16]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2724,7 +2885,7 @@ namespace Common.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Common.Protobuf.DataReflection.Descriptor.MessageTypes[16]; }
+      get { return global::Common.Protobuf.DataReflection.Descriptor.MessageTypes[17]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2940,7 +3101,7 @@ namespace Common.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Common.Protobuf.DataReflection.Descriptor.MessageTypes[17]; }
+      get { return global::Common.Protobuf.DataReflection.Descriptor.MessageTypes[18]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2957,7 +3118,7 @@ namespace Common.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public EquipData(EquipData other) : this() {
-      capacity_ = other.capacity_;
+      grid_ = other.grid_;
       equipList_ = other.equipList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -2967,24 +3128,24 @@ namespace Common.Protobuf {
       return new EquipData(this);
     }
 
-    /// <summary>Field number for the "capacity" field.</summary>
-    public const int CapacityFieldNumber = 1;
-    private int capacity_;
+    /// <summary>Field number for the "grid" field.</summary>
+    public const int GridFieldNumber = 1;
+    private int grid_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Capacity {
-      get { return capacity_; }
+    public int Grid {
+      get { return grid_; }
       set {
-        capacity_ = value;
+        grid_ = value;
       }
     }
 
     /// <summary>Field number for the "equip_list" field.</summary>
     public const int EquipListFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::Common.Protobuf.EquipInfo> _repeated_equipList_codec
-        = pb::FieldCodec.ForMessage(18, global::Common.Protobuf.EquipInfo.Parser);
-    private readonly pbc::RepeatedField<global::Common.Protobuf.EquipInfo> equipList_ = new pbc::RepeatedField<global::Common.Protobuf.EquipInfo>();
+    private static readonly pbc::MapField<long, global::Common.Protobuf.EquipInfo>.Codec _map_equipList_codec
+        = new pbc::MapField<long, global::Common.Protobuf.EquipInfo>.Codec(pb::FieldCodec.ForInt64(8), pb::FieldCodec.ForMessage(18, global::Common.Protobuf.EquipInfo.Parser), 18);
+    private readonly pbc::MapField<long, global::Common.Protobuf.EquipInfo> equipList_ = new pbc::MapField<long, global::Common.Protobuf.EquipInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::Common.Protobuf.EquipInfo> EquipList {
+    public pbc::MapField<long, global::Common.Protobuf.EquipInfo> EquipList {
       get { return equipList_; }
     }
 
@@ -3001,16 +3162,16 @@ namespace Common.Protobuf {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Capacity != other.Capacity) return false;
-      if(!equipList_.Equals(other.equipList_)) return false;
+      if (Grid != other.Grid) return false;
+      if (!EquipList.Equals(other.EquipList)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Capacity != 0) hash ^= Capacity.GetHashCode();
-      hash ^= equipList_.GetHashCode();
+      if (Grid != 0) hash ^= Grid.GetHashCode();
+      hash ^= EquipList.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -3024,11 +3185,11 @@ namespace Common.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Capacity != 0) {
+      if (Grid != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(Capacity);
+        output.WriteInt32(Grid);
       }
-      equipList_.WriteTo(output, _repeated_equipList_codec);
+      equipList_.WriteTo(output, _map_equipList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -3037,10 +3198,10 @@ namespace Common.Protobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Capacity != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Capacity);
+      if (Grid != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Grid);
       }
-      size += equipList_.CalculateSize(_repeated_equipList_codec);
+      size += equipList_.CalculateSize(_map_equipList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -3052,8 +3213,8 @@ namespace Common.Protobuf {
       if (other == null) {
         return;
       }
-      if (other.Capacity != 0) {
-        Capacity = other.Capacity;
+      if (other.Grid != 0) {
+        Grid = other.Grid;
       }
       equipList_.Add(other.equipList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -3068,11 +3229,11 @@ namespace Common.Protobuf {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            Capacity = input.ReadInt32();
+            Grid = input.ReadInt32();
             break;
           }
           case 18: {
-            equipList_.AddEntriesFrom(input, _repeated_equipList_codec);
+            equipList_.AddEntriesFrom(input, _map_equipList_codec);
             break;
           }
         }
@@ -3089,7 +3250,7 @@ namespace Common.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Common.Protobuf.DataReflection.Descriptor.MessageTypes[18]; }
+      get { return global::Common.Protobuf.DataReflection.Descriptor.MessageTypes[19]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3221,7 +3382,7 @@ namespace Common.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Common.Protobuf.DataReflection.Descriptor.MessageTypes[19]; }
+      get { return global::Common.Protobuf.DataReflection.Descriptor.MessageTypes[20]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3342,7 +3503,7 @@ namespace Common.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Common.Protobuf.DataReflection.Descriptor.MessageTypes[20]; }
+      get { return global::Common.Protobuf.DataReflection.Descriptor.MessageTypes[21]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3502,7 +3663,7 @@ namespace Common.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Common.Protobuf.DataReflection.Descriptor.MessageTypes[21]; }
+      get { return global::Common.Protobuf.DataReflection.Descriptor.MessageTypes[22]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3662,7 +3823,7 @@ namespace Common.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Common.Protobuf.DataReflection.Descriptor.MessageTypes[22]; }
+      get { return global::Common.Protobuf.DataReflection.Descriptor.MessageTypes[23]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3862,7 +4023,7 @@ namespace Common.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Common.Protobuf.DataReflection.Descriptor.MessageTypes[23]; }
+      get { return global::Common.Protobuf.DataReflection.Descriptor.MessageTypes[24]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

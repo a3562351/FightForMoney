@@ -98,14 +98,19 @@ class RoutePlayer
         {
             this.Logout();
         }, null);
+
+        RSPlayerDisconnect protocol = new RSPlayerDisconnect();
+        protocol.PlayerId = this.PlayerId;
+        Server.GetInstance().GetServer<RouteServer>().SendMsgToAllServer(protocol);
     }
 
     public void Logout()
     {
-        RSPlayerLogout protocol = new RSPlayerLogout();
-        protocol.PlayerId = PlayerId;
-        Server.GetInstance().GetServer<RouteServer>().SendMsgToAllServer(protocol);
         RouteUserMgr.GetInstance().DelPlayer(this);
+
+        RSPlayerLogout protocol = new RSPlayerLogout();
+        protocol.PlayerId = this.PlayerId;
+        Server.GetInstance().GetServer<RouteServer>().SendMsgToAllServer(protocol);
     }
 
     public void SendMsg(IMessage message)
@@ -184,12 +189,47 @@ class RouteUserMgr
         Log.DebugFormat("Del RoutePlayer Id:{0}", player.PlayerId);
     }
 
-    //重连去掉旧连接
     public void DelPlayerByConnectId(int connect_id)
     {
         if (this.connect_id_to_player.ContainsKey(connect_id))
         {
             this.connect_id_to_player.Remove(connect_id);
+        }
+    }
+
+    public void DispatchToPlayer(IMessage data)
+    {
+        foreach (KeyValuePair<int, RoutePlayer> pair in this.player_id_to_player)
+        {
+            pair.Value.SendMsg(data);
+        }
+    }
+
+    public void DispatchToPlayerExceptList(IMessage data, List<int> player_id_list)
+    {
+        Dictionary<int, bool> except_player_map = new Dictionary<int, bool>();
+        foreach (int player_id in player_id_list)
+        {
+            except_player_map[player_id] = true;
+        }
+
+        foreach (KeyValuePair<int, RoutePlayer> pair in this.player_id_to_player)
+        {
+            if (!except_player_map.ContainsKey(pair.Key))
+            {
+                pair.Value.SendMsg(data);
+            }
+        }
+    }
+
+    public void DispatchToPlayerList(IMessage data, List<int> player_id_list)
+    {
+        foreach (int player_id in player_id_list)
+        {
+            if (this.player_id_to_player.ContainsKey(player_id))
+            {
+                this.player_id_to_player[player_id].SendMsg(data);
+            }
         }
     }
 }

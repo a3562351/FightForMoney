@@ -20,6 +20,7 @@ class LoginHandleMgr
         this.server.GetSocket().AddCSHandler(typeof(CSLogin), this.CSLogin);
         this.server.GetSocket().AddCSHandler(typeof(CSCreatePlayer), this.CSCreatePlayer);
         this.server.GetSocket().AddCSHandler(typeof(CSLoadPlayer), this.CSLoadPlayer);
+        this.server.GetSocket().AddCSHandler(typeof(RSPlayerLogout), this.RSPlayerLogout);
 
         this.server_data = DataTool.LoadLServerData() ?? new LoginServerData();
         if (this.server_data.MaxUserId < Const.MIN_USER_ID)
@@ -50,7 +51,7 @@ class LoginHandleMgr
             player_info.MapName = player_struct.PlayerData.MapName;
             message.PlayerList.Add(player_info);
         }
-        this.server.GetSocket().SendMsgToRoute(message, connect_id_in_route, null);
+        this.server.GetSocket().SendMsgToRoute(message, connect_id_in_route);
     }
 
     private void CSLogin(IMessage data, int connect_id, int addition)
@@ -75,7 +76,7 @@ class LoginHandleMgr
                 LRLoginResult message = new LRLoginResult();
                 message.ResultCode = NoticeCode.LoginSucc;
                 message.UserId = user_info.UserId;
-                this.server.GetSocket().SendMsgToRoute(message, connect_id_in_route, null);
+                this.server.GetSocket().SendMsgToRoute(message, connect_id_in_route);
 
                 List<int> player_id_list = new List<int>();
                 foreach (int player_id in user_info.PlayerIdList)
@@ -88,7 +89,7 @@ class LoginHandleMgr
             {
                 LRLoginResult message = new LRLoginResult();
                 message.ResultCode = NoticeCode.NotExistAccount;
-                this.server.GetSocket().SendMsgToRoute(message, connect_id_in_route, null);
+                this.server.GetSocket().SendMsgToRoute(message, connect_id_in_route);
             }
         }
         //注册
@@ -98,7 +99,7 @@ class LoginHandleMgr
             {
                 LRLoginResult message = new LRLoginResult();
                 message.ResultCode = NoticeCode.ExistAccount;
-                this.server.GetSocket().SendMsgToRoute(message, connect_id_in_route, null);
+                this.server.GetSocket().SendMsgToRoute(message, connect_id_in_route);
             }
             else
             {
@@ -119,7 +120,7 @@ class LoginHandleMgr
                 LRLoginResult message = new LRLoginResult();
                 message.ResultCode = NoticeCode.LoginSucc;
                 message.UserId = user_info.UserId;
-                this.server.GetSocket().SendMsgToRoute(message, connect_id_in_route, null);
+                this.server.GetSocket().SendMsgToRoute(message, connect_id_in_route);
 
                 this.SendPlayerList(new List<int>(), connect_id_in_route);
             }
@@ -178,7 +179,7 @@ class LoginHandleMgr
         {
             LRPlayerRepeat message = new LRPlayerRepeat();
             message.PlayerId = player_id;
-            this.server.GetSocket().SendMsgToRoute(message, connect_id_in_route, null);
+            this.server.GetSocket().SendMsgToRoute(message, connect_id_in_route);
         }
 
         UserInfo user_info = DataTool.LoadUser(user_id);
@@ -199,5 +200,13 @@ class LoginHandleMgr
         json["PlayerId"] = player_id;
         json["ConnectIdInRoute"] = connect_id_in_route;
         this.server.RemoteCall(RemoteId.LS_LoadPlayer, json, SceneId.MAP);
+    }
+
+    private void RSPlayerLogout(IMessage data, int connect_id, int addition)
+    {
+        if (this.player_map.ContainsKey(addition))
+        {
+            this.player_map.Remove(addition);
+        }
     }
 }

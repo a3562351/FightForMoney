@@ -26,25 +26,23 @@ namespace Common.Protobuf {
           string.Concat(
             "Cg1NYXBJbmZvLnByb3RvEg9jb21tb24ucHJvdG9idWYiNwoJU0NNYXBJbmZv",
             "EioKCG1hcF9pbmZvGAEgASgLMhguY29tbW9uLnByb3RvYnVmLk1hcEluZm8i",
-            "HgoKQ1NNYXBFbnRlchIQCghtYXBfbmFtZRgBIAEoCSLcAgoHTWFwSW5mbxIz",
-            "Cgtjb21tb25faW5mbxgBIAEoCzIeLmNvbW1vbi5wcm90b2J1Zi5NYXBDb21t",
-            "b25JbmZvEj0KC3RlcnJhaW5fbWFwGAIgAygLMiguY29tbW9uLnByb3RvYnVm",
-            "Lk1hcEluZm8uVGVycmFpbk1hcEVudHJ5EjkKCWJ1aWxkX21hcBgDIAMoCzIm",
-            "LmNvbW1vbi5wcm90b2J1Zi5NYXBJbmZvLkJ1aWxkTWFwRW50cnkaUgoPVGVy",
-            "cmFpbk1hcEVudHJ5EgsKA2tleRgBIAEoBRIuCgV2YWx1ZRgCIAEoCzIfLmNv",
-            "bW1vbi5wcm90b2J1Zi5NYXBUZXJyYWluSW5mbzoCOAEaTgoNQnVpbGRNYXBF",
-            "bnRyeRILCgNrZXkYASABKAUSLAoFdmFsdWUYAiABKAsyHS5jb21tb24ucHJv",
-            "dG9idWYuTWFwQnVpbGRJbmZvOgI4ASJwCg1NYXBDb21tb25JbmZvEg4KBnZl",
-            "cnNvbhgBIAEoCRIMCgRuYW1lGAIgASgJEgwKBHRpbWUYAyABKAkSDQoFd2lk",
-            "dGgYBCABKAUSDgoGaGVpZ2h0GAUgASgFEhQKDGJhc2VfdGVycmFpbhgGIAEo",
-            "BSIhCg5NYXBUZXJyYWluSW5mbxIPCgdkYXRhX2lkGAEgASgFIjIKDE1hcEJ1",
-            "aWxkSW5mbxIPCgdkYXRhX2lkGAEgASgFEhEKCWRpcmVjdGlvbhgCIAEoAmIG",
-            "cHJvdG8z"));
+            "3AIKB01hcEluZm8SMwoLY29tbW9uX2luZm8YASABKAsyHi5jb21tb24ucHJv",
+            "dG9idWYuTWFwQ29tbW9uSW5mbxI9Cgt0ZXJyYWluX21hcBgCIAMoCzIoLmNv",
+            "bW1vbi5wcm90b2J1Zi5NYXBJbmZvLlRlcnJhaW5NYXBFbnRyeRI5CglidWls",
+            "ZF9tYXAYAyADKAsyJi5jb21tb24ucHJvdG9idWYuTWFwSW5mby5CdWlsZE1h",
+            "cEVudHJ5GlIKD1RlcnJhaW5NYXBFbnRyeRILCgNrZXkYASABKAUSLgoFdmFs",
+            "dWUYAiABKAsyHy5jb21tb24ucHJvdG9idWYuTWFwVGVycmFpbkluZm86AjgB",
+            "Gk4KDUJ1aWxkTWFwRW50cnkSCwoDa2V5GAEgASgFEiwKBXZhbHVlGAIgASgL",
+            "Mh0uY29tbW9uLnByb3RvYnVmLk1hcEJ1aWxkSW5mbzoCOAEicAoNTWFwQ29t",
+            "bW9uSW5mbxIOCgZ2ZXJzb24YASABKAkSDAoEbmFtZRgCIAEoCRIMCgR0aW1l",
+            "GAMgASgJEg0KBXdpZHRoGAQgASgFEg4KBmhlaWdodBgFIAEoBRIUCgxiYXNl",
+            "X3RlcnJhaW4YBiABKAUiIQoOTWFwVGVycmFpbkluZm8SDwoHZGF0YV9pZBgB",
+            "IAEoBSIyCgxNYXBCdWlsZEluZm8SDwoHZGF0YV9pZBgBIAEoBRIRCglkaXJl",
+            "Y3Rpb24YAiABKAJiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.SCMapInfo), global::Common.Protobuf.SCMapInfo.Parser, new[]{ "MapInfo" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.CSMapEnter), global::Common.Protobuf.CSMapEnter.Parser, new[]{ "MapName" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.MapInfo), global::Common.Protobuf.MapInfo.Parser, new[]{ "CommonInfo", "TerrainMap", "BuildMap" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, null, }),
             new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.MapCommonInfo), global::Common.Protobuf.MapCommonInfo.Parser, new[]{ "Verson", "Name", "Time", "Width", "Height", "BaseTerrain" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.MapTerrainInfo), global::Common.Protobuf.MapTerrainInfo.Parser, new[]{ "DataId" }, null, null, null),
@@ -194,138 +192,6 @@ namespace Common.Protobuf {
   }
 
   /// <summary>
-  ///客户端已进入地图
-  /// </summary>
-  public sealed partial class CSMapEnter : pb::IMessage<CSMapEnter> {
-    private static readonly pb::MessageParser<CSMapEnter> _parser = new pb::MessageParser<CSMapEnter>(() => new CSMapEnter());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<CSMapEnter> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Common.Protobuf.MapInfoReflection.Descriptor.MessageTypes[1]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public CSMapEnter() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public CSMapEnter(CSMapEnter other) : this() {
-      mapName_ = other.mapName_;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public CSMapEnter Clone() {
-      return new CSMapEnter(this);
-    }
-
-    /// <summary>Field number for the "map_name" field.</summary>
-    public const int MapNameFieldNumber = 1;
-    private string mapName_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string MapName {
-      get { return mapName_; }
-      set {
-        mapName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as CSMapEnter);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(CSMapEnter other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (MapName != other.MapName) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (MapName.Length != 0) hash ^= MapName.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (MapName.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(MapName);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (MapName.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(MapName);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(CSMapEnter other) {
-      if (other == null) {
-        return;
-      }
-      if (other.MapName.Length != 0) {
-        MapName = other.MapName;
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 10: {
-            MapName = input.ReadString();
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  /// <summary>
   ///地图信息
   /// </summary>
   public sealed partial class MapInfo : pb::IMessage<MapInfo> {
@@ -336,7 +202,7 @@ namespace Common.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Common.Protobuf.MapInfoReflection.Descriptor.MessageTypes[2]; }
+      get { return global::Common.Protobuf.MapInfoReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -514,7 +380,7 @@ namespace Common.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Common.Protobuf.MapInfoReflection.Descriptor.MessageTypes[3]; }
+      get { return global::Common.Protobuf.MapInfoReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -786,7 +652,7 @@ namespace Common.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Common.Protobuf.MapInfoReflection.Descriptor.MessageTypes[4]; }
+      get { return global::Common.Protobuf.MapInfoReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -918,7 +784,7 @@ namespace Common.Protobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Common.Protobuf.MapInfoReflection.Descriptor.MessageTypes[5]; }
+      get { return global::Common.Protobuf.MapInfoReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

@@ -153,6 +153,21 @@ class Player {
             string.Format("attr_id:{0} old:{1} new:{2}", attr_id, old_value, new_value));
     }
 
+    public void GetReward(List<List<int>> reward_list)
+    {
+
+    }
+
+    public void CanConsume(List<List<long>> reward_list)
+    {
+
+    }
+
+    public void Consume(List<List<int>> reward_list)
+    {
+
+    }
+
     public ModuleBase GetModule(ModuleIdx idx)
     {
         if (!this.module_map.ContainsKey(idx))

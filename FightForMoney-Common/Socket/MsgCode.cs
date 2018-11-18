@@ -24,32 +24,31 @@ class MsgCode
 	public const short CS_BuildRemove = 10017;
 	public const short CS_BuildUpgrade = 10018;
 	public const short SC_MapInfo = 10019;
-	public const short CS_MapEnter = 10020;
-	public const short CS_CreatePlayer = 10021;
-	public const short CS_LoadPlayer = 10022;
-	public const short SC_PlayerList = 10023;
-	public const short SC_PlayerInfo = 10024;
-	public const short SC_SceneEnter = 10025;
-	public const short CS_SceneEnter = 10026;
-	public const short SR_RegisterServer = 10027;
-	public const short RS_DispatchServer = 10028;
-	public const short LR_LoginResult = 10029;
-	public const short LR_PlayerRepeat = 10030;
-	public const short SS_RemoteCall = 10031;
-	public const short SS_RemoteResult = 10032;
-	public const short RS_PlayerLogin = 10033;
-	public const short RS_PlayerDisconnect = 10034;
-	public const short RS_PlayerLogout = 10035;
-	public const short SR_LoadPlayerComplete = 10036;
-	public const short SR_ChangeOutScene = 10037;
-	public const short RS_ChangeInScene = 10038;
-	public const short CS_Login = 10039;
-	public const short SC_Login = 10040;
-	public const short CS_Reconnect = 10041;
-	public const short SC_Reconnect = 10042;
-	public const short CS_HeartBeat = 10043;
-	public const short SC_HeartBeat = 10044;
-	public const short SC_Notice = 10045;
+	public const short CS_CreatePlayer = 10020;
+	public const short CS_LoadPlayer = 10021;
+	public const short SC_PlayerList = 10022;
+	public const short SC_PlayerInfo = 10023;
+	public const short SC_SceneEnter = 10024;
+	public const short CS_SceneEnter = 10025;
+	public const short SR_RegisterServer = 10026;
+	public const short RS_DispatchServer = 10027;
+	public const short LR_LoginResult = 10028;
+	public const short LR_PlayerRepeat = 10029;
+	public const short SS_RemoteCall = 10030;
+	public const short SS_RemoteResult = 10031;
+	public const short RS_PlayerLogin = 10032;
+	public const short RS_PlayerDisconnect = 10033;
+	public const short RS_PlayerLogout = 10034;
+	public const short SR_LoadPlayerComplete = 10035;
+	public const short SR_ChangeOutScene = 10036;
+	public const short RS_ChangeInScene = 10037;
+	public const short CS_Login = 10038;
+	public const short SC_Login = 10039;
+	public const short CS_Reconnect = 10040;
+	public const short SC_Reconnect = 10041;
+	public const short CS_HeartBeat = 10042;
+	public const short SC_HeartBeat = 10043;
+	public const short SC_Notice = 10044;
 
 	public static Dictionary<short, MessageParser> ProtocolParser = new Dictionary<short, MessageParser>() {
 		{MsgCode.CS_BattleBehavior, CSBattleBehavior.Parser},
@@ -71,7 +70,6 @@ class MsgCode
 		{MsgCode.CS_BuildRemove, CSBuildRemove.Parser},
 		{MsgCode.CS_BuildUpgrade, CSBuildUpgrade.Parser},
 		{MsgCode.SC_MapInfo, SCMapInfo.Parser},
-		{MsgCode.CS_MapEnter, CSMapEnter.Parser},
 		{MsgCode.CS_CreatePlayer, CSCreatePlayer.Parser},
 		{MsgCode.CS_LoadPlayer, CSLoadPlayer.Parser},
 		{MsgCode.SC_PlayerList, SCPlayerList.Parser},
@@ -118,7 +116,6 @@ class MsgCode
 		{typeof(CSBuildRemove), MsgCode.CS_BuildRemove},
 		{typeof(CSBuildUpgrade), MsgCode.CS_BuildUpgrade},
 		{typeof(SCMapInfo), MsgCode.SC_MapInfo},
-		{typeof(CSMapEnter), MsgCode.CS_MapEnter},
 		{typeof(CSCreatePlayer), MsgCode.CS_CreatePlayer},
 		{typeof(CSLoadPlayer), MsgCode.CS_LoadPlayer},
 		{typeof(SCPlayerList), MsgCode.SC_PlayerList},

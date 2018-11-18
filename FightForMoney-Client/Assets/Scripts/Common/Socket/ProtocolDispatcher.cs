@@ -37,7 +37,7 @@ class ProtocolDispatcher
         Type type = protocol.GetType();
         if (!handle_map.ContainsKey(type))
         {
-            Log.Debug("协议类型没有注册处理函数:" + type.ToString());
+            Log.WarnFormat("协议类型没有注册处理函数:{0}", type.ToString());
             return;
         }
 

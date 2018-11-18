@@ -65,6 +65,8 @@ message RSPlayerLogout{
 //加载玩家数据完成
 message SRLoadPlayerComplete{
 	int32 player_id = 1;
+	int32 server_id = 2;
+	int32 scene_id = 3;
 }
 
 //切出场景

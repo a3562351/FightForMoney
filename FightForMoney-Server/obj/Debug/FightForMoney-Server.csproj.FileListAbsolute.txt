@@ -4,3 +4,4 @@ D:\Project\FightForMoney\FightForMoney-Server\obj\Debug\FightForMoney-Server.exe
 D:\Project\FightForMoney\FightForMoney-Server\obj\Debug\FightForMoney-Server.pdb
 D:\Project\FightForMoney\FightForMoney-Server\FightForMoney-Server.exe
 D:\Project\FightForMoney\FightForMoney-Server\FightForMoney-Server.pdb
+D:\Project\FightForMoney\FightForMoney-Server\obj\Debug\FightForMoney-Server.csprojResolveAssemblyReference.cache

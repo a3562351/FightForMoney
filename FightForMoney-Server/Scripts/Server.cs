@@ -31,6 +31,16 @@ class Server {
         return this.server.GetSocket();
     }
 
+    public int GetServerId()
+    {
+        return this.server.GetServerInfo().ServerId;
+    }
+
+    public int GetServerType()
+    {
+        return this.server.GetServerInfo().ServerType;
+    }
+
     private void InitPath()
     {
         PathTool.SetRootPath(Environment.CurrentDirectory + "/Scripts");

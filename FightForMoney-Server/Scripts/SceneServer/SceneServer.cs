@@ -20,7 +20,7 @@ class SceneServer : ServerBase
     public override void Init()
     {
         this.player_mgr = new PlayerMgr();
-        this.handle_mgr = new PlayerHandleMgr(this);
+        this.handle_mgr = new PlayerHandleMgr();
 
         this.socket.ConnectToRoute(this.route_ip, this.route_port);
         this.RegisterToRoute();

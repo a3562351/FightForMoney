@@ -33,7 +33,7 @@ message SCPlayerInfo{
 
 //通知客户端进场景
 message SCSceneEnter{
-	string map_name = 1; 
+	string map_name = 1;
 }
 
 //客户端已进入场景

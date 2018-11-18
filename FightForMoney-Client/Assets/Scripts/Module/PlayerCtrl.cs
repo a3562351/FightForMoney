@@ -1,4 +1,5 @@
 ﻿using Common.Protobuf;
+using Google.Protobuf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,7 @@ class PlayerCtrl : CtrlBase
         ClientSocket.GetInstance().AddSCHandler(typeof(SCNotice), this.SCNotice);
         ClientSocket.GetInstance().AddSCHandler(typeof(SCPlayerList), this.SCPlayerList);
         ClientSocket.GetInstance().AddSCHandler(typeof(SCPlayerInfo), this.SCPlayerInfo);
+        ClientSocket.GetInstance().AddSCHandler(typeof(SCSceneEnter), this.SCSceneEnter);
         ClientSocket.GetInstance().AddSCHandler(typeof(SCMapInfo), this.SCMapInfo);
     }
 
@@ -85,7 +87,7 @@ class PlayerCtrl : CtrlBase
         ClientSocket.GetInstance().SendMessage(protocol);
     }
 
-    private void SCLogin(object data)
+    private void SCLogin(IMessage data)
     {
         SCLogin protocol = data as SCLogin;
         this.Notice(protocol.ResultCode);
@@ -100,12 +102,12 @@ class PlayerCtrl : CtrlBase
         }
     }
 
-    private void SCHeartBeat(object data)
+    private void SCHeartBeat(IMessage data)
     {
 
     }
 
-    private void SCNotice(object data)
+    private void SCNotice(IMessage data)
     {
         SCNotice protocol = data as SCNotice;
         string[] param = new string[protocol.Param.Count];
@@ -116,7 +118,7 @@ class PlayerCtrl : CtrlBase
         this.Notice(protocol.NoticeCode, param);
     }
 
-    private void SCPlayerList(object data)
+    private void SCPlayerList(IMessage data)
     {
         SCPlayerList protocol = data as SCPlayerList;
         
@@ -127,7 +129,7 @@ class PlayerCtrl : CtrlBase
         EventDispatcher.GetInstance().DispatchEvent(EventType.SelectPlayer, event_data);
     }
 
-    private void SCPlayerInfo(object data)
+    private void SCPlayerInfo(IMessage data)
     {
         SCPlayerInfo protocol = data as SCPlayerInfo;
         PlayerStruct player_struct = protocol.PlayerStruct;
@@ -135,7 +137,13 @@ class PlayerCtrl : CtrlBase
         Debug.Log(player_struct);
     }
 
-    private void SCMapInfo(object data)
+    private void SCSceneEnter(IMessage data)
+    {
+        CSSceneEnter protocol = new CSSceneEnter();
+        ClientSocket.GetInstance().SendMessage(protocol);
+    }
+
+    private void SCMapInfo(IMessage data)
     {
         SCMapInfo protocol = data as SCMapInfo;
         this.LoadMap(protocol.MapInfo);

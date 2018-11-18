@@ -38,13 +38,14 @@ namespace Common.Protobuf {
             "dG9fc2VydmVyX2lkGAIgASgFEhYKDmZyb21fc2VydmVyX2lkGAMgASgFEhMK",
             "C2NhbGxiYWNrX2lkGAQgASgFIiIKDVJTUGxheWVyTG9naW4SEQoJcGxheWVy",
             "X2lkGAEgASgFIicKElJTUGxheWVyRGlzY29ubmVjdBIRCglwbGF5ZXJfaWQY",
-            "ASABKAUiIwoOUlNQbGF5ZXJMb2dvdXQSEQoJcGxheWVyX2lkGAEgASgFIikK",
-            "FFNSTG9hZFBsYXllckNvbXBsZXRlEhEKCXBsYXllcl9pZBgBIAEoBSJzChBT",
-            "UkNoYW5nZU91dFNjZW5lEjQKDXBsYXllcl9TdHJ1Y3QYASABKAsyHS5jb21t",
-            "b24ucHJvdG9idWYuUGxheWVyU3RydWN0EhQKDHRvX3NlcnZlcl9pZBgCIAEo",
-            "BRITCgt0b19zY2VuZV9pZBgDIAEoBSJHCg9SU0NoYW5nZUluU2NlbmUSNAoN",
-            "cGxheWVyX1N0cnVjdBgBIAEoCzIdLmNvbW1vbi5wcm90b2J1Zi5QbGF5ZXJT",
-            "dHJ1Y3RiBnByb3RvMw=="));
+            "ASABKAUiIwoOUlNQbGF5ZXJMb2dvdXQSEQoJcGxheWVyX2lkGAEgASgFIk4K",
+            "FFNSTG9hZFBsYXllckNvbXBsZXRlEhEKCXBsYXllcl9pZBgBIAEoBRIRCglz",
+            "ZXJ2ZXJfaWQYAiABKAUSEAoIc2NlbmVfaWQYAyABKAUicwoQU1JDaGFuZ2VP",
+            "dXRTY2VuZRI0Cg1wbGF5ZXJfU3RydWN0GAEgASgLMh0uY29tbW9uLnByb3Rv",
+            "YnVmLlBsYXllclN0cnVjdBIUCgx0b19zZXJ2ZXJfaWQYAiABKAUSEwoLdG9f",
+            "c2NlbmVfaWQYAyABKAUiRwoPUlNDaGFuZ2VJblNjZW5lEjQKDXBsYXllcl9T",
+            "dHJ1Y3QYASABKAsyHS5jb21tb24ucHJvdG9idWYuUGxheWVyU3RydWN0YgZw",
+            "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Common.Protobuf.DataReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -57,7 +58,7 @@ namespace Common.Protobuf {
             new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.RSPlayerLogin), global::Common.Protobuf.RSPlayerLogin.Parser, new[]{ "PlayerId" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.RSPlayerDisconnect), global::Common.Protobuf.RSPlayerDisconnect.Parser, new[]{ "PlayerId" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.RSPlayerLogout), global::Common.Protobuf.RSPlayerLogout.Parser, new[]{ "PlayerId" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.SRLoadPlayerComplete), global::Common.Protobuf.SRLoadPlayerComplete.Parser, new[]{ "PlayerId" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.SRLoadPlayerComplete), global::Common.Protobuf.SRLoadPlayerComplete.Parser, new[]{ "PlayerId", "ServerId", "SceneId" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.SRChangeOutScene), global::Common.Protobuf.SRChangeOutScene.Parser, new[]{ "PlayerStruct", "ToServerId", "ToSceneId" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Common.Protobuf.RSChangeInScene), global::Common.Protobuf.RSChangeInScene.Parser, new[]{ "PlayerStruct" }, null, null, null)
           }));
@@ -1670,6 +1671,8 @@ namespace Common.Protobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public SRLoadPlayerComplete(SRLoadPlayerComplete other) : this() {
       playerId_ = other.playerId_;
+      serverId_ = other.serverId_;
+      sceneId_ = other.sceneId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1689,6 +1692,28 @@ namespace Common.Protobuf {
       }
     }
 
+    /// <summary>Field number for the "server_id" field.</summary>
+    public const int ServerIdFieldNumber = 2;
+    private int serverId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int ServerId {
+      get { return serverId_; }
+      set {
+        serverId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "scene_id" field.</summary>
+    public const int SceneIdFieldNumber = 3;
+    private int sceneId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int SceneId {
+      get { return sceneId_; }
+      set {
+        sceneId_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as SRLoadPlayerComplete);
@@ -1703,6 +1728,8 @@ namespace Common.Protobuf {
         return true;
       }
       if (PlayerId != other.PlayerId) return false;
+      if (ServerId != other.ServerId) return false;
+      if (SceneId != other.SceneId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1710,6 +1737,8 @@ namespace Common.Protobuf {
     public override int GetHashCode() {
       int hash = 1;
       if (PlayerId != 0) hash ^= PlayerId.GetHashCode();
+      if (ServerId != 0) hash ^= ServerId.GetHashCode();
+      if (SceneId != 0) hash ^= SceneId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1727,6 +1756,14 @@ namespace Common.Protobuf {
         output.WriteRawTag(8);
         output.WriteInt32(PlayerId);
       }
+      if (ServerId != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(ServerId);
+      }
+      if (SceneId != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(SceneId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1737,6 +1774,12 @@ namespace Common.Protobuf {
       int size = 0;
       if (PlayerId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(PlayerId);
+      }
+      if (ServerId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ServerId);
+      }
+      if (SceneId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(SceneId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1752,6 +1795,12 @@ namespace Common.Protobuf {
       if (other.PlayerId != 0) {
         PlayerId = other.PlayerId;
       }
+      if (other.ServerId != 0) {
+        ServerId = other.ServerId;
+      }
+      if (other.SceneId != 0) {
+        SceneId = other.SceneId;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -1765,6 +1814,14 @@ namespace Common.Protobuf {
             break;
           case 8: {
             PlayerId = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            ServerId = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            SceneId = input.ReadInt32();
             break;
           }
         }

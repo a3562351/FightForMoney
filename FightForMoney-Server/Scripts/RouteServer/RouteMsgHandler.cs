@@ -149,6 +149,8 @@ class RouteMsgHandler : MsgHandler
 
                     RoutePlayer player = RouteUserMgr.GetInstance().GetPlayerByConnectId(addition);
                     player.PlayerId = protocol.PlayerId;
+                    player.CurServerId = protocol.ServerId;
+                    player.CurSceneId = protocol.SceneId;
                     player.AddState(RoutePlayerState.LOADED);
                     player.LoadMsg = null;
                     RouteUserMgr.GetInstance().AddPlayerByPlayerId(player);
@@ -261,9 +263,53 @@ class RouteMsgHandler : MsgHandler
                     ServerInfo server_info = this.server.GetServerInfoByConnectId(connect_id);
                     if(server_info != null)
                     {
-                        //来自服务器的信息，转发给客户端
-                        RoutePlayer player = RouteUserMgr.GetInstance().GetPlayerByPlayerId(addition);
-                        player.SendMsg(data);
+                        //来自服务器的信息
+                        switch (addition)
+                        {
+                            //转发给服务器
+                            case TranType.ALL_SERVER:
+                                {
+                                    Server.GetInstance().GetServer<RouteServer>().SendMsgToAllServer(data);
+                                }
+                                break;
+
+                            //转发给客户端
+                            case TranType.ALL_PLAYER:
+                                {
+                                    RouteUserMgr.GetInstance().DispatchToPlayer(data);
+                                }
+                                break;
+                            case TranType.ALL_PLAYER_EXCEPT_LIST:
+                                {
+                                    RouteUserMgr.GetInstance().DispatchToPlayerExceptList(data, player_id_list);
+                                }
+                                break;
+                            case TranType.PLAYER_LIST:
+                                {
+                                    RouteUserMgr.GetInstance().DispatchToPlayerList(data, player_id_list);
+                                }
+                                break;
+                            default:
+                                {
+                                    if(addition > 0)
+                                    {
+                                        RoutePlayer player = RouteUserMgr.GetInstance().GetPlayerByPlayerId(addition);
+                                        if(player != null)
+                                        {
+                                            player.SendMsg(data);
+                                        }
+                                        else
+                                        {
+                                            Log.Error("Transmit Protocol Not Player Id:{0}", addition);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        Log.Error("Transmit Protocol TranType:{0} Not Handle", addition);
+                                    }
+                                }
+                                break;
+                        }
                     }
                     else
                     {
@@ -292,7 +338,7 @@ class RouteMsgHandler : MsgHandler
                         else
                         {
                             //默认转发到用户所在场景服
-                            ServerInfo to_server_info = this.server.GetServerInfoByServerId(player.CurServerId);
+                            ServerInfo to_server_info = this.server.GetServerInfoBySceneId(player.CurSceneId, player.CurServerId);
                             this.server.GetSocket().SendMsgToServer(data, to_server_info.ConnectId, player.PlayerId);
                         }
                     }
@@ -310,9 +356,6 @@ class RouteMsgHandler : MsgHandler
             if (player.CheckState(RoutePlayerState.LOGINED))
             {
                 player.Disconnect();
-                RSPlayerLogout message = new RSPlayerLogout();
-                message.PlayerId = player.PlayerId;
-                this.server.SendMsgToAllServer(message);
             }
         }
     }

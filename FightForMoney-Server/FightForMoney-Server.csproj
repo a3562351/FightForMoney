@@ -75,6 +75,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Scripts\Common\Util\CommonStruct.cs" />
+    <Compile Include="Scripts\Common\Util\Const.cs" />
+    <Compile Include="Scripts\Common\Util\MulDictionary.cs" />
+    <Compile Include="Scripts\Common\Util\RevDictionary.cs" />
+    <Compile Include="Scripts\Common\Util\NoticeCode.cs" />
+    <Compile Include="Scripts\Common\Util\Util.cs" />
     <Compile Include="Scripts\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scripts\ChatServer\ChatRemoteHandler.cs" />
@@ -85,13 +91,9 @@
     <Compile Include="Scripts\CommonServer\CommonRemoteHandler.cs" />
     <Compile Include="Scripts\CommonServer\CommonServer.cs" />
     <Compile Include="Scripts\CommonServer\Mail\MailMgr.cs" />
-    <Compile Include="Scripts\Common\CommonStruct.cs" />
     <Compile Include="Scripts\Common\ConfigPool.cs" />
-    <Compile Include="Scripts\Common\Const.cs" />
-    <Compile Include="Scripts\Common\NoticeCode.cs" />
     <Compile Include="Scripts\Common\Socket\ByteBuffer.cs" />
     <Compile Include="Scripts\Common\Socket\ByteCache.cs" />
-    <Compile Include="Scripts\Common\Socket\CustomDictionary.cs" />
     <Compile Include="Scripts\Common\Socket\MessageQueue.cs" />
     <Compile Include="Scripts\Common\Socket\MsgCode.cs" />
     <Compile Include="Scripts\Common\Socket\Protocol.cs" />
@@ -106,8 +108,7 @@
     <Compile Include="Scripts\Common\Socket\Protocol\Player.cs" />
     <Compile Include="Scripts\Common\Socket\Protocol\Server.cs" />
     <Compile Include="Scripts\Common\Socket\Protocol\User.cs" />
-    <Compile Include="Scripts\Common\Util.cs" />
-    <Compile Include="Scripts\Global\DataBase.cs" />
+    <Compile Include="Scripts\Global\DataMgr.cs" />
     <Compile Include="Scripts\Global\DataTool.cs" />
     <Compile Include="Scripts\Global\GameMsgHandler.cs" />
     <Compile Include="Scripts\Global\MsgHandler.cs" />

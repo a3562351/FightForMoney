@@ -49,13 +49,13 @@ class SceneMgr
             return false;
         }
 
-        int scene_type = int.Parse(cSceneItem["Type"].ToString());
+        int scene_type = Server.GetInstance().GetServerType();
         int scene_idx;
-        if (scene_type == SceneType.MAIN)
+        if (scene_type == ServerType.MAIN)
         {
             scene_idx = scene_id;
         }
-        else if(scene_type == SceneType.INSTANCE)
+        else if(scene_type == ServerType.INSTANCE)
         {
             scene_idx = this.GetSceneIdx();
         }

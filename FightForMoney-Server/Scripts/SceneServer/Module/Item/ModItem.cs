@@ -6,12 +6,18 @@ using System.Collections.Generic;
 class ModItem : ModuleBase
 {
     private ItemData item_data = new ItemData();
+    private TwoKeyDictionary<int, int, long> item_id_to_uid = new TwoKeyDictionary<int, int, long>();
 
     public ModItem(Module module, Player player) : base(module, player) { }
 
     public override void Init(PlayerStruct player_struct)
     {
         this.item_data = player_struct.ItemData ?? this.item_data;
+
+        foreach (KeyValuePair<long, ItemInfo> pair in this.item_data.ItemList)
+        {
+            this.item_id_to_uid.Set(pair.Value.ItemId, pair.Value.Bind, pair.Key);
+        }
     }
 
     public override void Save(PlayerStruct player_struct)
@@ -34,40 +40,184 @@ class ModItem : ModuleBase
         this.player.SendMsg(protocal);
     }
 
-    private int GetItem(int item_id)
+    private void SendItemChange(long uid)
     {
-        if (!this.item_data.ItemList.ContainsKey(item_id))
-        {
-            return 0;
-        }
-        return this.item_data.ItemList[item_id];
+
     }
 
-    private bool SetItem(int item_id, int num)
+    private bool ChangeItem(int item_id, int count, int bind, bool is_check = false)
     {
-        if (!this.item_data.ItemList.ContainsKey(item_id) && !this.CheckGrid())
+        if(count > 0)
+        {
+            return this.AddItem(item_id, count, bind, is_check);
+        }
+        else if(count < 0)
+        {
+            return this.ReduceItem(item_id, count, bind, is_check);
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+    private bool AddItem(int item_id, int count, int bind, bool is_check = false)
+    {
+        if(count < 0)
         {
             return false;
         }
 
-        this.item_data.ItemList[item_id] = num;
-        if (num == 0)
+        if(count == 0)
         {
-            this.item_data.ItemList.Remove(item_id);
+            return true;
         }
+
+        long uid = this.item_id_to_uid.Get(item_id, bind);
+        ItemInfo item_info = this.item_data.ItemList[uid];
+        if (item_info == null)
+        {
+            item_info = new ItemInfo();
+        }
+
+        int have_count = item_info.Count;
+        int now_count = have_count + count;
+
+        if(now_count > int.MaxValue)
+        {
+            return false;
+        }
+
+        if (is_check)
+        {
+            return true;
+        }
+
+        if(uid <= 0)
+        {
+            this.item_data.ItemList[uid] = item_info;
+        }
+        item_info.Count = now_count;
+
         this.SetDirty(true);
+        this.Log(System.Reflection.MethodBase.GetCurrentMethod().Name,
+            string.Format("uid:{0} item_id:{1} have_count:{2} now_count:{3}", uid, item_id, have_count, now_count));
+
         return true;
     }
 
-    private bool HaveItem(int item_id, int num)
+    private bool ReduceItem(int item_id, int count, int bind = 0, bool is_check = false)
     {
-        if (!this.item_data.ItemList.ContainsKey(item_id))
+        if (count > 0)
         {
             return false;
         }
 
-        int have_num = item_data.ItemList[item_id];
-        return have_num >= num;
+        if (count == 0)
+        {
+            return true;
+        }
+
+        //绑定和非绑都算进去，优先消耗绑定
+        if (bind == 0)
+        {
+            int use_bind_count = 0;
+            int use_free_count = 0;
+            long uid = this.item_id_to_uid.Get(item_id, BindType.BIND);
+            if (uid > 0)
+            {
+                ItemInfo item_info = this.item_data.ItemList[uid];
+                if (count <= item_info.Count)
+                {
+                    use_bind_count = count;
+                }
+                else
+                {
+                    use_bind_count = item_info.Count;
+                    count -= use_bind_count;
+
+                    uid = this.item_id_to_uid.Get(item_id, BindType.FREE);
+                    if (uid <= 0)
+                    {
+                        return false;
+                    }
+
+                    item_info = this.item_data.ItemList[uid];
+                    if (count > item_info.Count)
+                    {
+                        return false;
+                    }
+
+                    use_free_count = count;
+                }
+            }
+
+            if (is_check)
+            {
+                return true;
+            }
+
+            if(use_bind_count > 0)
+            {
+                uid = this.item_id_to_uid.Get(item_id, BindType.BIND);
+                ItemInfo item_info = this.item_data.ItemList[uid];
+                int have_count = item_info.Count;
+                int now_count = have_count - use_bind_count;
+                item_info.Count = now_count;
+
+                this.SetDirty(true);
+                this.Log(System.Reflection.MethodBase.GetCurrentMethod().Name,
+                    string.Format("uid:{0} item_id:{1} have_count:{2} now_count:{3}", uid, item_id, have_count, now_count));
+            }
+
+            if(use_free_count > 0)
+            {
+                uid = this.item_id_to_uid.Get(item_id, BindType.BIND);
+                ItemInfo item_info = this.item_data.ItemList[uid];
+                int have_count = item_info.Count;
+                int now_count = have_count - use_free_count;
+                item_info.Count = now_count;
+
+                this.SetDirty(true);
+                this.Log(System.Reflection.MethodBase.GetCurrentMethod().Name,
+                    string.Format("uid:{0} item_id:{1} have_count:{2} now_count:{3}", uid, item_id, have_count, now_count));
+            }
+
+            return true;
+        }
+        else
+        {
+            long uid = this.item_id_to_uid.Get(item_id, bind);
+            if (uid <= 0)
+            {
+                return false;
+            }
+
+            ItemInfo item_info = this.item_data.ItemList[uid];
+            int have_count = item_info.Count;
+            int now_count = have_count - count;
+            if (now_count < 0)
+            {
+                return false;
+            }
+
+            if (is_check)
+            {
+                return true;
+            }
+
+            item_info.Count = now_count;
+            this.SetDirty(true);
+            this.Log(System.Reflection.MethodBase.GetCurrentMethod().Name,
+                string.Format("uid:{0} item_id:{1} have_count:{2} now_count:{3}", uid, item_id, have_count, now_count));
+
+            return true;
+        }
+    }
+
+    private bool HaveItem(int item_id, int count, int bind = 0)
+    {
+        return this.GetItemCount(item_id, bind) >= count;
     }
 
     private bool CheckGrid()
@@ -80,67 +230,106 @@ class ModItem : ModuleBase
         return true;
     }
 
-    public bool PutIn(int item_id, int num)
+    private List<List<int>> MergeItem(List<List<int>> item_list)
     {
-        if (num <= 0) return false;
+        TwoKeyDictionary<int, int, List<int>> map = new TwoKeyDictionary<int, int, List<int>>();
+        foreach (List<int> item_info in item_list)
+        {
+            int item_id = 0, count = 0, bind = 0, addition = 0;
+            bool result = Global.ParseItemInfo(item_info, ref item_id, ref count, ref bind, ref addition);
+            if (!result)
+            {
+                return null;
+            }
 
-        int have_num = this.GetItem(item_id);
-        int new_num = have_num + num;
-        if (!this.SetItem(item_id, new_num))
+            List<int> info = map.Get(item_id, bind);
+            if(info == null)
+            {
+                info = new List<int> {item_id, 0, bind, addition};
+            }
+            info[2] += count;
+            map.Set(item_id, bind, info);
+        }
+        return map.ToList();
+    }
+
+    public int GetItemCount(int item_id, int bind = 0)
+    {
+        int have_count = 0;
+
+        //绑定和非绑都算进去
+        if (bind == 0)
+        {
+            long uid = this.item_id_to_uid.Get(item_id, BindType.FREE);
+            if (this.item_data.ItemList.ContainsKey(uid))
+            {
+                have_count += this.item_data.ItemList[uid].Count;
+            }
+
+            uid = this.item_id_to_uid.Get(item_id, BindType.BIND);
+            if (this.item_data.ItemList.ContainsKey(uid))
+            {
+                have_count += this.item_data.ItemList[uid].Count;
+            }
+        }
+        else
+        {
+            long uid = this.item_id_to_uid.Get(item_id, bind);
+            if (this.item_data.ItemList.ContainsKey(uid))
+            {
+                have_count += this.item_data.ItemList[uid].Count;
+            }
+        }
+        return have_count;
+    }
+
+    public bool CanAddItemList(List<List<int>> item_list)
+    {
+        return this.AddItemList(item_list, true);
+    }
+
+    public bool AddItemList(List<List<int>> item_list, bool is_check = false)
+    {
+        item_list = this.MergeItem(item_list);
+        if (item_list == null)
         {
             return false;
         }
 
-        this.Log(System.Reflection.MethodBase.GetCurrentMethod().Name,
-            string.Format("item_id:{0} have_num:{1} new_num:{2}", item_id, have_num, new_num));
-
+        foreach (List<int> item_info in item_list)
+        {
+            int item_id = 0, count = 0, bind = 0, addition = 0;
+            Global.ParseItemInfo(item_info, ref item_id, ref count, ref bind, ref addition);
+            if(!this.AddItem(item_id, count, bind, is_check))
+            {
+                return false;
+            }
+        }
         return true;
     }
 
-    public bool UseItem(int item_id, int num)
+    public bool CanConsumeItemList(List<List<int>> item_list)
     {
-        if (num < 0) return false;
-
-        if (!this.HaveItem(item_id, num))
-        {
-            return false;
-        }
-
-        int have_num = this.GetItem(item_id);
-        int new_num = have_num - num;
-        if (!this.SetItem(item_id, new_num))
-        {
-            return false;
-        }
-
-        if (!this.EffectHandle(item_id, num))
-        {
-            this.SetItem(item_id, have_num);
-            return false;
-        }
-
-        this.Log(System.Reflection.MethodBase.GetCurrentMethod().Name,
-            string.Format("item_id:{0} have:{1} new:{2}", item_id, have_num, new_num));
-
-        return true;
+        return this.ConsumeItemList(item_list, true);
     }
 
-    public bool ConsumeItem(int item_id, int num)
+    public bool ConsumeItemList(List<List<int>> item_list, bool is_check = false)
     {
-        if (num <= 0) return false;
-
-        if (!this.HaveItem(item_id, num))
+        item_list = this.MergeItem(item_list);
+        if (item_list == null)
         {
             return false;
         }
 
-        int have_num = this.GetItem(item_id);
-        int new_num = have_num - num;
-        this.SetItem(item_id, new_num);
-
-        this.Log(System.Reflection.MethodBase.GetCurrentMethod().Name,
-            string.Format("item_id:{0} have:{1} new:{2}", item_id, have_num, new_num));
-
+        foreach (List<int> item_info in item_list)
+        {
+            int item_id = 0, count = 0, bind = 0, addition = 0;
+            Global.ParseItemInfo(item_info, ref item_id, ref count, ref bind, ref addition);
+            if (!this.ReduceItem(item_id, count, bind, is_check))
+            {
+                return false;
+            }
+        }
         return true;
     }
 }

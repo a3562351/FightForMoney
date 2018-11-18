@@ -21,7 +21,7 @@ class ServerSocket
     private Socket server_socket;   //其他服用的Socket
     private ByteCache byte_cache = new ByteCache();
     private Dictionary<Socket, ByteCache> cache_map = new Dictionary<Socket, ByteCache>();
-    private CustomDictionary<int, Socket> socket_map = new CustomDictionary<int, Socket>();
+    private RevDictionary<int, Socket> socket_map = new RevDictionary<int, Socket>();
     private int max_connect_id = 0;
     private Object msg_lock = new Object();
     private List<ProtocolInfo> protocol_list = new List<ProtocolInfo>();

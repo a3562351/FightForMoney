@@ -81,9 +81,14 @@ message MapBuildData {
 
 //物品数据
 message ItemData {
-	int32 version = 1;
-	int32 grid = 2;
-	map<int32, int32> item_list = 3;
+	int32 grid = 1;
+	map<int64, ItemInfo> item_list = 2;
+}
+
+message ItemInfo {
+	int32 item_id = 1;
+	int32 count = 2;
+	int32 bind = 3;
 }
 
 //商店数据
@@ -111,8 +116,8 @@ message Attr {
 
 //装备数据
 message EquipData {
-	int32 capacity = 1;
-	repeated EquipInfo equip_list = 2;
+	int32 grid = 1;
+	map<int64, EquipInfo> equip_list = 2;
 }
 
 message EquipInfo {
