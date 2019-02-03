@@ -1,0 +1,42 @@
+{
+  "10101": {
+    "ID": 10101,
+    "Name": "平地",
+    "Prefab": "Terrain/TerrainGrid",
+    "Avatar": "Terrain/Ground_1",
+    "Icon": "Terrain/Ground_1",
+    "Desc": "平坦的土地",
+    "Type": 1,
+    "SubType": 101,
+    "BuildList": [
+      1,
+      2
+    ]
+  },
+  "10201": {
+    "ID": 10201,
+    "Name": "草地",
+    "Prefab": "Terrain/TerrainGrid",
+    "Avatar": "Terrain/Grass_1",
+    "Icon": "Terrain/Grass_1",
+    "Desc": "青青的草地",
+    "Type": 1,
+    "SubType": 102,
+    "BuildList": [
+      ""
+    ]
+  },
+  "20101": {
+    "ID": 20101,
+    "Name": "浅滩",
+    "Prefab": "Terrain/TerrainGrid",
+    "Avatar": "Terrain/Winter_1",
+    "Icon": "Terrain/Winter_1",
+    "Desc": "浅浅的海滩",
+    "Type": 2,
+    "SubType": 201,
+    "BuildList": [
+      ""
+    ]
+  }
+}

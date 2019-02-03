@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package common.protobuf;
+import "Data.proto";
+
+//[30001]进入频道
+message CSEnterChannel{
+	int32 channel_type = 1;
+	int32 unit_no = 2;
+}
+
+//[30001]离开频道
+message CSLeaveChannel{
+	int32 channel_type = 1;
+}
+
+//频道改变
+message SCChangeChannel{
+	int32 channel_type = 1;
+	int32 unit_no = 2;
+}
+
+//[30001]公聊
+message CSPublicChat {
+	int32 channel_type = 1;			//频道类型
+	string content = 2;
+}
+
+//公聊广播
+message SCPublicChat {
+	int32 channel_type = 1;
+	int32 unit_no = 2;
+	ChatData data = 3;
+}
+
+//[30001]私聊
+message CSPrivateChat {
+	int32 player_id = 1;
+	string content = 2;
+}
+
+//推送私聊
+message SCPrivateChat {
+	ChatData data = 1;
+}

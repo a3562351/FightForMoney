@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package common.protobuf;
+import "Common.proto";
+
+message CSBattleBehavior{
+	int32 entity_id = 1;
+	ST_Pos pos = 2;
+	ST_Face face = 3;
+	int32 skill_id = 4;
+	int32 target_id = 5;
+}
+
+message SCBattleBehavior{
+	int32 entity_id = 1;
+	ST_Pos pos = 2;
+	ST_Face face = 3;
+	int32 skill_id = 4;
+	int32 target_id = 5;
+}
+
+message SCBattleStateUpdate{
+
+}

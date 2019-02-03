@@ -1,0 +1,138 @@
+{
+  "1": {
+    "ID": 1,
+    "ServerType": 1,
+    "Name": "RouteServer1",
+    "SceneList": [
+      1
+    ],
+    "IP": "127.0.0.1",
+    "Port": 6324,
+    "Connect": [
+      [
+        "127.0.0.1",
+        6325
+      ]
+    ]
+  },
+  "2": {
+    "ID": 2,
+    "ServerType": 1,
+    "Name": "RouteServer2",
+    "SceneList": [
+      1
+    ],
+    "IP": "127.0.0.1",
+    "Port": 6325,
+    "Connect": [
+      [
+        "127.0.0.1",
+        6324
+      ]
+    ]
+  },
+  "3": {
+    "ID": 3,
+    "ServerType": 0,
+    "Name": "LoginServer",
+    "SceneList": [
+      1001
+    ],
+    "IP": "",
+    "Port": 0,
+    "Connect": [
+      [
+        "127.0.0.1",
+        6324
+      ],
+      [
+        "127.0.0.1",
+        6325
+      ]
+    ]
+  },
+  "4": {
+    "ID": 4,
+    "ServerType": 0,
+    "Name": "CommonServer",
+    "SceneList": [
+      1002,
+      1003,
+      1004,
+      1005,
+      1006
+    ],
+    "IP": "",
+    "Port": 0,
+    "Connect": [
+      [
+        "127.0.0.1",
+        6324
+      ],
+      [
+        "127.0.0.1",
+        6325
+      ]
+    ]
+  },
+  "5": {
+    "ID": 5,
+    "ServerType": 0,
+    "Name": "MainServer",
+    "SceneList": [
+      10001
+    ],
+    "IP": "",
+    "Port": 0,
+    "Connect": [
+      [
+        "127.0.0.1",
+        6324
+      ],
+      [
+        "127.0.0.1",
+        6325
+      ]
+    ]
+  },
+  "6": {
+    "ID": 6,
+    "ServerType": 0,
+    "Name": "InstanceServer",
+    "SceneList": [
+      20001
+    ],
+    "IP": "",
+    "Port": 0,
+    "Connect": [
+      [
+        "127.0.0.1",
+        6324
+      ],
+      [
+        "127.0.0.1",
+        6325
+      ]
+    ]
+  },
+  "7": {
+    "ID": 7,
+    "ServerType": 0,
+    "Name": "DataServer",
+    "SceneList": [
+      10
+    ],
+    "IP": "",
+    "Port": 0,
+    "Connect": [
+      [
+        "127.0.0.1",
+        6324
+      ],
+      [
+        "127.0.0.1",
+        6325
+      ]
+    ]
+  }
+}

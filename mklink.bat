@@ -1,4 +1,4 @@
-mklink /J .\FightForMoney-Server\Scripts\Common .\FightForMoney-Common
-mklink /J .\FightForMoney-Client\Assets\Scripts\Common .\FightForMoney-Common
+mklink /J .\Server\Scripts\Common .\Common
+mklink /J .\Client\Assets\Scripts\Common .\Common
 
 pause

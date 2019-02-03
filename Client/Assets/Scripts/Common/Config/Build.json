@@ -1,0 +1,30 @@
+{
+  "10101": {
+    "ID": 10101,
+    "Name": "平房",
+    "Prefab": "Build/BuildGrid",
+    "Avatar": "",
+    "Icon": "",
+    "Desc": "普通的楼房",
+    "Type": 1,
+    "XGrid": 1,
+    "YGrid": 1,
+    "Year": 50,
+    "Price": 200000,
+    "RentPrice": 400
+  },
+  "20101": {
+    "ID": 20101,
+    "Name": "铺面",
+    "Prefab": "Build/BuildGrid",
+    "Avatar": "",
+    "Icon": "",
+    "Desc": "普通的铺面",
+    "Type": 2,
+    "XGrid": 2,
+    "YGrid": 2,
+    "Year": 50,
+    "Price": 500000,
+    "RentPrice": 1000
+  }
+}

@@ -1,0 +1,35 @@
+syntax = "proto3";
+package common.protobuf;
+
+//地图信息返回
+message SCMapInfo {
+	MapInfo map_info = 1;
+}
+
+//地图信息
+message MapInfo {
+	MapCommonInfo common_info = 1;
+	map<int32, MapTerrainInfo> terrain_map = 2;
+	map<int32, MapBuildInfo> build_map = 3;
+}
+
+//地图基础信息
+message MapCommonInfo {
+	string verson = 1;
+    string name = 2;
+    string time = 3;
+    int32 width = 4;
+    int32 height = 5;
+    int32 base_terrain = 6;
+}
+
+//地图地形信息
+message MapTerrainInfo {
+	int32 data_id = 1;
+}
+
+//地图建筑信息
+message MapBuildInfo {
+	int32 data_id = 1;
+    float direction = 2;
+}

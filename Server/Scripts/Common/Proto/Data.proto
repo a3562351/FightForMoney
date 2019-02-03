@@ -1,0 +1,159 @@
+syntax = "proto3";
+package common.protobuf;
+
+//路由服数据
+message RouteServerData {
+	
+}
+
+//登陆服数据
+message LoginServerData {
+	int32 max_user_id = 1;
+	int32 max_player_id = 2;
+	map<string, int32> player_name_map = 3;
+}
+
+//场景服数据
+message SceneServerData {
+
+}
+
+//公共服数据
+message CommonServerData {
+	
+}
+
+//账号数据
+message AccountInfo {
+	string account = 1;
+	string password = 2;
+	int32 create_time = 3;
+	int32 user_id = 4;
+}
+
+//用户数据
+message UserInfo {
+	int32 user_id = 1;
+	repeated int32 player_id_list = 2;
+	int32 login_time = 3;
+	int32 logout_time = 4;
+}
+
+//玩家所有数据
+message PlayerStruct {
+	PlayerData player_data = 1;
+	MapData map_data = 2;
+	ItemData item_data = 3;
+	ShopData shop_data = 4;
+	StaffData staff_data = 5;
+	EquipData equip_data = 6;
+	TruckData truck_data = 7;
+}
+
+//玩家基础数据
+message PlayerData {
+	int32 id = 1;
+    string name = 2;
+    string map_name = 3;
+    map<int32, int64> attr_map = 4;
+}
+
+//地图数据
+message MapData {
+	map<string, MapDataUnit> map = 1;
+}
+
+//单个地图数据
+message MapDataUnit {
+	repeated MapTerrainData terrain_list = 1;
+	repeated MapBuildData build_list = 2;	
+}
+
+//土地数据
+message MapTerrainData {
+	int32 grid_id = 1;
+}
+
+//建筑数据
+message MapBuildData {
+	int32 grid_id = 1;
+}
+
+//物品数据
+message ItemData {
+	int32 grid = 1;
+	map<int64, ItemInfo> item_list = 2;
+}
+
+message ItemInfo {
+	int32 item_id = 1;
+	int32 count = 2;
+	int32 bind = 3;
+}
+
+//商店数据
+message ShopData {
+	int32 capacity = 1;
+	repeated int32 item_list = 2;
+}
+
+//雇佣数据
+message StaffData {
+	repeated StaffInfo staff_list = 1;
+}
+
+message StaffInfo {
+	int32 id = 1;
+	int32 end_time = 2;
+}
+
+message Attr {
+	int32 hp = 1;
+	int32 mp = 2;
+	int32 food = 3;
+	int32 mood = 4;
+}
+
+//装备数据
+message EquipData {
+	int32 grid = 1;
+	map<int64, EquipInfo> equip_list = 2;
+}
+
+message EquipInfo {
+	int32 id = 1;
+}
+
+//货车数据
+message TruckData {
+	repeated TruckInfo truck_list = 1;
+}
+
+message TruckInfo {
+	int32 id = 1;
+	int32 end_time = 2;
+}
+
+
+//聊天玩家所需数据
+message ChatPlayer {
+	int32 id = 1;
+	string name = 2;
+}
+
+//聊天数据
+message ChatData {
+	ChatPlayer chat_player = 1;
+	string content = 2;				//内容
+	int32 time = 3;					//时间戳
+}
+
+
+
+
+
+
+//客户端设置数据
+message SettingData {
+	string lang = 1;
+}

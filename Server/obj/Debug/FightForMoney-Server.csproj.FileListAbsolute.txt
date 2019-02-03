@@ -1,0 +1,7 @@
+D:\Project\FightForMoney\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
+D:\Project\FightForMoney\Server\Server.exe.config
+D:\Project\FightForMoney\Server\obj\Debug\Server.exe
+D:\Project\FightForMoney\Server\obj\Debug\Server.pdb
+D:\Project\FightForMoney\Server\Server.exe
+D:\Project\FightForMoney\Server\Server.pdb
+D:\Project\FightForMoney\Server\obj\Debug\Server.csprojResolveAssemblyReference.cache
